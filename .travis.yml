@@ -4,8 +4,13 @@ node_js:
 branches:
   only:
     - alpha
+    - cicd
+before_script:
+  - node shared/install-dependencies.js
+script:
+  - yarn run build:web
 deploy:
-  skip_cleanup: true
+#  skip_cleanup: true
   provider: firebase
   token:
     secure: Goy+u2wMHddeyvGBR64JeepbM0HbDdoSNirX+TnbkURo1KnUW7RQ0dCaRE2UMV7gQpspaDaJQ+H9CtKj7FrSbIaAidnLuNI2vUbVBjh5bVEXKd0OY6vxanDtainXeXnzwVvIKVWxEeYQyWiv2d2NXiLNqsLTEcs6v2gY7YwISoONtv3reXTd2eN4uGfLe4zdM26F41l95hDMBqhlI1LuSq41irrvlogWLwIUiL96OHZ9+yxg6F0Ai0cC9O+UUlZn6BLvBK/8lI9fbdEEDHSuFEFqdNiA/yvjaGe1U7xsxSvLoyX5PnH4NCN78mmblw+pwyxbA1Gg2nwwZxywJG0MdocYwF1704t8wqEJROKrIFs0Fa1sEf38nxqhCRJmKtG6gy4SzV9f+CbbrXH5ANm0V7q6mg+5lpgKb2kuXERdX8Oyr+2nEbVWKtDQ80REAnSyHYhke/78TXlExAb0pK2smPSB3CqfE1qmIAQEiOGFJUgodd6IoGjx+sCBuuiw8pqbtQPsYGE6WqC0GrT6nOnxNF8Ne8KxOlGSy5aHO5fmGKsqnqxskvxtXapl88SmPuaEtlQ4Q04/sQFKEIVTiSp8lKPV79g8tRCWXR7q5VI1GlOpJQIIqc9Ipe2UIioy4hmHdocvZLyUAANYQsiFToZcjk0GWIugZU9AjYMUP9qb9N0=
