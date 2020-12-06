@@ -5,6 +5,10 @@ branches:
   only:
     - alpha
     - cicd
+before_script:
+  - node shared/install-dependencies.js
+script:
+  - yarn run build:web
 deploy:
   skip_cleanup: true
   provider: firebase
