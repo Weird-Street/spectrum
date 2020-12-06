@@ -4,6 +4,7 @@ node_js:
 branches:
   only:
     - alpha
+    - cicd
 deploy:
   skip_cleanup: true
   provider: firebase
