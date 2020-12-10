@@ -36,3 +36,4 @@ cypress/videos/
 cacert
 .env
 .env.*
+.idea

@@ -9,8 +9,7 @@ before_script:
   - yarn install
   - node shared/install-dependencies.js
 script:
-  - yarn run dev:api
-  - yarn run dev:web
+  - npm run build
 deploy:
 #  skip_cleanup: true
   provider: firebase
