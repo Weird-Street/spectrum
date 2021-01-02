@@ -8,9 +8,6 @@ branches:
     - alpha
     - cicd
 
-addons:
-  ssh_known_hosts: ${SSH_HOST}
-
 #before_script:
 #  - yarn install
 #  - node shared/install-dependencies.js
@@ -30,9 +27,11 @@ before_deploy:
      fi'
   - echo "End before deploy script"
 
+addons:
+  ssh_known_hosts: ${SSH_HOST}
 
-jobs:
-  fast_finish: true
+#jobs:
+#  fast_finish: true
 
 deploy:
   provider: script
