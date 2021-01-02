@@ -16,13 +16,17 @@ addons:
 #  - yarn run build:web
 
 before_deploy:
+  - echo "Start before deploy script"
   - 'if [ -z ${DEPLOY_SSH_KEY_BASE64} ]; then
         echo ${DEPLOY_SSH_KEY_BASE64} | base64 --decode > /tmp/deploy_rsa
         chmod 600 /tmp/deploy_rsa
         ssh-add /tmp/deploy_rsa
+        echo "Output:"
+        cat /tmp/deploy_rsa
      else
         echo "Error: DEPLOY_SSH_KEY_BASE64 variable is not set!"
      fi'
+  - echo "End before deploy script"
 
 deploy:
   provider: script
