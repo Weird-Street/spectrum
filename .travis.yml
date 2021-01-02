@@ -27,7 +27,7 @@ jobs:
         - echo "==========Start before deploy script"
         - echo $DEPLOY_SSH_KEY_BASE64
         - |
-          if [ -z ${DEPLOY_SSH_KEY_BASE64} ]; then
+          if [ -z ${DEPLOY_SSH_KEY_BASE64:+x} ]; then
               echo ${DEPLOY_SSH_KEY_BASE64} | base64 --decode > /tmp/deploy_rsa
               chmod 600 /tmp/deploy_rsa
               ssh-add /tmp/deploy_rsa
