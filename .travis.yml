@@ -14,36 +14,44 @@ branches:
 #script:
 #  - yarn run build:web
 
-before_deploy:
-  - echo "Start before deploy script"
-  - 'if [ -z ${DEPLOY_SSH_KEY_BASE64} ]; then
-        echo ${DEPLOY_SSH_KEY_BASE64} | base64 --decode > /tmp/deploy_rsa
-        chmod 600 /tmp/deploy_rsa
-        ssh-add /tmp/deploy_rsa
-        echo "Output:"
-        cat /tmp/deploy_rsa
-     else
-        echo "Error: DEPLOY_SSH_KEY_BASE64 variable is not set!"
-     fi'
-  - echo "End before deploy script"
-
 addons:
   ssh_known_hosts: ${SSH_HOST}
 
-#jobs:
-#  fast_finish: true
+jobs:
+  fast_finish: true
+  include:
+    - name: "Create a new deploy folder"
+      node_js: 12
+      stage: Build
+      before_install:
+        - echo "==========Start before deploy script"
+        - 'if [ -z ${DEPLOY_SSH_KEY_BASE64} ]; then
+              echo ${DEPLOY_SSH_KEY_BASE64} | base64 --decode > /tmp/deploy_rsa
+              chmod 600 /tmp/deploy_rsa
+              ssh-add /tmp/deploy_rsa
+              echo "Output:"
+              cat /tmp/deploy_rsa
+           else
+              echo "Error: DEPLOY_SSH_KEY_BASE64 variable is not set!"
+           fi'
+      install:
+        - echo "================ install script"
+        - apt-get install mc
+      before_script:
+        - echo "=============== before script"
+        - apt-get update
+      script:
+        - echo "==================Script run"
+      after_success:
+        - echo "==========End after success script"
 
-deploy:
-  provider: script
-  skip_cleanup: true
-  script:
-    - curdate=(`date +%Y-%m-%d_%H-%M`)
-    - echo "Start before deploy script: $curdate"
-    - cat /tmp/deploy_rsa
+
+#  script:
+#    - curdate=(`date +%Y-%m-%d_%H-%M`)
+#    - echo "Start before deploy script: $curdate"
+#    - cat /tmp/deploy_rsa
 #    - mkdir -p /mnt/disks/weirdstreet/node/${curdate}
 #    - echo "Directory /mnt/disks/weirdstreet/node/${curdate} has been created"
 #    - rsync -r --delete-after --quiet $TRAVIS_BUILD_DIR ${SSH_USER}@${SSH_HOST}:/mnt/disks/weirdstreet/node/${curdate}
 #    - ln.....
-  on:
-    branch: cicd
-message: "The Wierd Street has been deployed"
+
