@@ -5,11 +5,13 @@ python: "2.7"
 
 before_install:
   - sudo apt-get update -qq
-  - sudo apt-get install -qq python-apt
+#  - sudo apt-get install -qq python-apt
 
 install:
-  - echo "================ install script"
-  - pip install ansible==1.9.1
+  - echo "================ install Ansible"
+#  - pip install ansible==1.9.1
+  - sudo apt-get install -qq -y ansible
+  - ansible --version
 
 before_script:
   - echo "=============== before script"
