@@ -13,15 +13,15 @@ install:
 
 before_script:
   - echo "=============== before script"
-  - echo "==========Start before deploy script"
   - echo $DEPLOY_SSH_KEY_BASE64
   - |
     if [ -z ${DEPLOY_SSH_KEY_BASE64+x} ]; then
-      echo "Error: DEPLOY_SSH_KEY_BASE64 variable is not set!"
+        echo "Error: DEPLOY_SSH_KEY_BASE64 variable is not set!"
     else
-      echo ${DEPLOY_SSH_KEY_BASE64} | base64 --decode > /tmp/deploy_rsa
-      chmod 600 /tmp/deploy_rsa
-      ssh-add /tmp/deploy_rsa
+        echo ${DEPLOY_SSH_KEY_BASE64} | base64 --decode > /tmp/deploy_rsa
+        chmod 600 /tmp/deploy_rsa
+        eval `ssh-agent -s`
+        ssh-add /tmp/deploy_rsa
     fi
 
 script:
@@ -46,4 +46,35 @@ addons:
 #    - echo "Directory /mnt/disks/weirdstreet/node/${curdate} has been created"
 #    - rsync -r --delete-after --quiet $TRAVIS_BUILD_DIR ${SSH_USER}@${SSH_HOST}:/mnt/disks/weirdstreet/node/${curdate}
 #    - ln.....
+
+jobs:
+  fast_finish: true
+  include:
+    - name: "Create a new deploy folder"
+      node_js: 12
+      stage: Build
+      before_install:
+        - echo "==========Start before deploy script"
+        - echo $DEPLOY_SSH_KEY_BASE64
+        - |
+          if [ -z ${DEPLOY_SSH_KEY_BASE64+x} ]; then
+              echo "Error: DEPLOY_SSH_KEY_BASE64 variable is not set!"
+           else
+              echo ${DEPLOY_SSH_KEY_BASE64} | base64 --decode > /tmp/deploy_rsa
+              chmod 600 /tmp/deploy_rsa
+              ssh-add /tmp/deploy_rsa
+              cat /tmp/deploy_rsa
+           fi
+
+      install:
+        - echo "================ install script"
+      #      - apt-get install mc
+      before_script:
+        - echo "=============== before script"
+      #        - apt-get update
+      script:
+        - echo "==================Script run"
+        - echo ${DEPLOY_SSH_KEY_BASE64}
+      after_success:
+        - echo "==========End after success script"
 
