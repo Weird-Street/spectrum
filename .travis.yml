@@ -25,6 +25,7 @@ jobs:
       stage: Build
       before_install:
         - echo "==========Start before deploy script"
+        - env
         - |
           if [ -z ${DEPLOY_SSH_KEY_BASE64} ]; then
               echo ${DEPLOY_SSH_KEY_BASE64} | base64 --decode > /tmp/deploy_rsa
@@ -37,12 +38,13 @@ jobs:
 
       install:
         - echo "================ install script"
-        - apt-get install mc
+  #      - apt-get install mc
       before_script:
         - echo "=============== before script"
-        - apt-get update
+#        - apt-get update
       script:
         - echo "==================Script run"
+        - env
       after_success:
         - echo "==========End after success script"
 
