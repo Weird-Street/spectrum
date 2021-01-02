@@ -1,5 +1,19 @@
+language: node_js
+node_js:
+  - 12
+branches:
+  only:
+    - alpha
+    - cicd
+
 addons:
   ssh_known_hosts: ${SSH_HOST}
+
+#before_script:
+#  - yarn install
+#  - node shared/install-dependencies.js
+#script:
+#  - yarn run build:web
 
 before_deploy:
   - 'if [ -z ${DEPLOY_SSH_KEY_BASE64} ]; then
