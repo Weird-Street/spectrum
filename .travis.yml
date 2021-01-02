@@ -1,11 +1,3 @@
-language: node_js
-node_js:
-  - 12
-branches:
-  only:
-    - alpha
-    - cicd
-
 addons:
   ssh_known_hosts: ${SSH_HOST}
 
@@ -31,10 +23,7 @@ before_deploy:
 deploy:
   provider: script
   skip_cleanup: true
-  script:
-    - curdate=(`date +%Y-%m-%d_%H-%M`)
-    - mkdir -p /mnt/disks/weirdstreet/node/${curdate}
-    - echo "Directory /mnt/disks/weirdstreet/node/${curdate} has been created"
+  script: curdate=(`date +%Y-%m-%d_%H-%M`); mkdir -p /mnt/disks/weirdstreet/node/${curdate}; echo "Directory /mnt/disks/weirdstreet/node/${curdate} has been created"
 #    - rsync -r --delete-after --quiet $TRAVIS_BUILD_DIR ${SSH_USER}@${SSH_HOST}:/mnt/disks/weirdstreet/node/${curdate}
 #    - ln.....
   on:
