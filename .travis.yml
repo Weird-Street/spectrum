@@ -25,8 +25,8 @@ before_script:
     else
         echo ${DEPLOY_SSH_KEY_BASE64} | base64 --decode > /tmp/deploy_rsa
         chmod 600 /tmp/deploy_rsa
-        eval `ssh-agent -s`
-        ssh-add /tmp/deploy_rsa
+        # eval `ssh-agent -s`
+        # ssh-add /tmp/deploy_rsa
     fi
 
 script:
@@ -38,7 +38,6 @@ script:
       - echo "PREVIOUS_GIT_HASH=${PREVIOUS_GIT_HASH}"
       - git archive --format=tar ${GIT_HASH} > .travisci/roles/copy_files/files/${GIT_HASH}.tar
       - sudo sed -i 's/#host_key_checking = False/host_key_checking = False/g' /etc/ansible/ansible.cfg
-      - cat /etc/ansible/ansible.cfg
       - ansible-playbook -i .travisci/inventory -e git_hash=${GIT_HASH} -e previous_git_hash=${PREVIOUS_GIT_HASH} --key-file /tmp/deploy_rsa .travisci/deploy.yml
 after_success:
     - echo "==========End after success script"

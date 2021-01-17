@@ -18,6 +18,6 @@
 
 - name: Extract the tarball
   command:
-    cmd: "sudo tar -xvf {{ project_path }}/{{ git_hash }}.tar -C {{ project_path }}/{{ git_hash }}"
+    cmd: "tar -xvf {{ project_path }}/{{ git_hash }}.tar -C {{ project_path }}/{{ git_hash }}"
   tags:
     - copy_files
