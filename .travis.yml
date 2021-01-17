@@ -37,7 +37,7 @@ script:
       - echo "GIT_HASH=${GIT_HASH}"
       - echo "PREVIOUS_GIT_HASH=${PREVIOUS_GIT_HASH}"
       - git archive --format=tar ${GIT_HASH} > ${GIT_HASH}.tar
-      - sed -i 's/#host_key_checking = False/host_key_checking = False/g' /etc/ansible/ansible.cfg
+      - sudo sed -i 's/#host_key_checking = False/host_key_checking = False/g' /etc/ansible/ansible.cfg
       - cat /etc/ansible/ansible.cfg
       - ansible-playbook -i .travisci/inventory -e git_hash=${GIT_HASH} -e previous_git_hash=${PREVIOUS_GIT_HASH} --key-file /tmp/deploy_rsa .travisci/deploy.yml
 after_success:
