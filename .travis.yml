@@ -16,7 +16,8 @@ install:
 before_script:
   - echo "=============== before script"
   - echo $DEPLOY_SSH_KEY_BASE64
-  - echo "${SSH_HOST} ansible_user=${SSH_USER}" > .travisci/inventory
+  - echo "[weirdstreet]" > .travisci/inventory
+  - echo "${SSH_HOST} ansible_user=${SSH_USER}" >> .travisci/inventory
   - cat .travisci/inventory
   - |
     if [ -z ${DEPLOY_SSH_KEY_BASE64+x} ]; then
