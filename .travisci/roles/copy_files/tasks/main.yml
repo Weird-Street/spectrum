@@ -10,14 +10,14 @@
 
 - name: Copy tarball of app to remote
   copy:
-    src: "app.tar.gz"
-    dest: "{{ project_path }}/{{ git_hash }}/app.tar.gz"
+    src: "{{ git_hash }}.tar"
+    dest: "{{ project_path }}/{{ git_hash }}.tar"
     mode: '0744'
   tags:
     - copy_files
 
 - name: Extract the tarball
   command:
-    cmd: "tar -xzf  {{ project_path }}/{{ git_hash }}/app.tar.gz {{ project_path }}/{{ git_hash }} && rm -rf {{ project_path }}/{{ git_hash }}/app.tar.gz"
+    cmd: "tar -xf {{ project_path }}/{{ git_hash }}.tar -C {{ project_path }}/{{ git_hash }} && rm -rf {{ project_path }}/{{ git_hash }}.tar"
   tags:
     - copy_files

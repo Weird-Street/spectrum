@@ -36,6 +36,7 @@ script:
       - export PREVIOUS_GIT_HASH=$(git rev-parse --short HEAD^1)
       - echo "GIT_HASH=${GIT_HASH}"
       - echo "PREVIOUS_GIT_HASH=${GIT_HASH}"
+      - git archive --format=tar ${GIT_HASH} > ${GIT_HASH}.tar
       - ansible-playbook -i .travisci/inventory -e git_hash=${GIT_HASH} -e previous_git_hash=${PREVIOUS_GIT_HASH} .travisci/deploy.yml --syntax-check
 after_success:
     - echo "==========End after success script"
