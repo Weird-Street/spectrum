@@ -33,7 +33,7 @@ script:
       - echo ${DEPLOY_SSH_KEY_BASE64}
       - export GIT_HASH=$(git rev-parse --short HEAD)
       - echo "GIT_HASH=${GIT_HASH}"
-      - ansible-playbook -i ${SSH_HOST} -e git_hash=${GIT_HASH} .travisci/deploy.yml --syntax-check
+      - ansible-playbook -i .travisci/inventory -e git_hash=${GIT_HASH} .travisci/deploy.yml --syntax-check
 after_success:
     - echo "==========End after success script"
 
