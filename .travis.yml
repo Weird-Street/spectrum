@@ -16,6 +16,8 @@ install:
 before_script:
   - echo "=============== before script"
   - echo $DEPLOY_SSH_KEY_BASE64
+  - echo "${SSH_HOST} ansible_user=${SSH_USER}" > .travisci/inventory
+  - cat .travisci/inventory
   - |
     if [ -z ${DEPLOY_SSH_KEY_BASE64+x} ]; then
         echo "Error: DEPLOY_SSH_KEY_BASE64 variable is not set!"
@@ -31,7 +33,7 @@ script:
       - echo ${DEPLOY_SSH_KEY_BASE64}
       - export GIT_HASH=$(git rev-parse --short HEAD)
       - echo "GIT_HASH=${GIT_HASH}"
-      - ansible-playbook -e git_hash=${GIT_HASH} .travisci/deploy.yml --syntax-check
+      - ansible-playbook -i ${SSH_HOST} -e git_hash=${GIT_HASH} .travisci/deploy.yml --syntax-check
 after_success:
     - echo "==========End after success script"
 
