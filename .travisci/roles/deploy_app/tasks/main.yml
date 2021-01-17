@@ -1,6 +1,15 @@
 ---
+- name: Kill all Spectrum WEB and API processes
+  shell: "docker exec weirdstreet pkill node; sleep 10; docker exec weirdstreet ps aufx"
+
 - name: Change the symlink to the app folder
-  shell: "rm -rf {{ project_path }}/app; sudo ln -s {{ project_path }}/{{ git_hash }} {{ project_path }}/app || echo exists"
+  shell: "rm -rf {{ project_path }}/app; sudo ln -s {{ project_path }}/{{ git_hash }} {{ project_path }}/app"
 
+- name: Starting Spectrum API
+  shell: "docker exec weirdstreet yarn run dev:api &"
 
+- name: Waiting util Spectrum API starts
+  shell: "sleep 60"
 
+- name: Starting Spectrum WEB
+  shell: "docker exec weirdstreet yarn run dev:web &"
