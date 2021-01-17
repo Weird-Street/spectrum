@@ -1,0 +1,13 @@
+---
+
+- name: Deploy Weird Street app
+  hosts: "weirdstreet"
+  become: yes
+  gather_facts: True
+
+  vars:
+    - project_path: "/mnt/disks/weirdstreet/node"
+
+  roles:
+    - copy_files
+    - deploy_app

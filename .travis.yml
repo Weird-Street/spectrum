@@ -29,6 +29,9 @@ before_script:
 script:
       - echo "==================Script run"
       - echo ${DEPLOY_SSH_KEY_BASE64}
+      - export GIT_HASH=$(git rev-parse --short HEAD)"
+      - echo "GIT_HASH=${GIT_HASH}"
+      - ansible-playbook -e git_hash=${GIT_HASH} .travisci/deploy.yml --syntax-check
 after_success:
     - echo "==========End after success script"
 

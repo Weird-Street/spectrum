@@ -1,0 +1,6 @@
+---
+- name: Change the symlink to the app folder
+  shell: "rm -rf {{ project_path }}/app; sudo ln -s {{ project_path }}/{{ git_hash }} {{ project_path }}/app || echo exists"
+
+
+
