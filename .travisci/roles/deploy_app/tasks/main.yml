@@ -6,7 +6,7 @@
   shell: "rm -rf {{ project_path }}/app; cd {{ project_path }}; sudo ln -s ../{{ git_hash }} app"
 
 - name: Cleanup old deployments except the laster two
-  shell: "cd {{ project_path }}; rm -rf `ls | grep -v \"app\|{{ git_hash }}\|{{ previous_git_hash }}\"`"
+  shell: "cd {{ project_path }}; rm -rf `ls | grep -v 'app\|{{ git_hash }}\|{{ previous_git_hash }}'`"
 
 - name: Starting Spectrum API
   shell: "docker exec weirdstreet yarn run dev:api &"
