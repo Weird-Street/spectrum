@@ -15,7 +15,7 @@
   shell: "docker exec weirdstreet yarn install"
 
 - name: Install Node dependencies
-  shell: "node shared/install-dependencies.js"
+  shell: "docker exec weirdstreet  node shared/install-dependencies.js"
 
 - name: Starting Spectrum API
   shell: "docker exec weirdstreet yarn run dev:api &"
