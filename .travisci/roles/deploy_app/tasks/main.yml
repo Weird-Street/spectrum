@@ -11,10 +11,16 @@
   args:
     chdir: "{{ project_path }}"
 
+- name: Yarn install
+  shell: "docker exec weirdstreet yarn install"
+
+- name: Install Node dependencies
+  shell: "node shared/install-dependencies.js"
+
 - name: Starting Spectrum API
   shell: "docker exec weirdstreet yarn run dev:api &"
 
-- name: Waiting util Spectrum API starts
+- name: Waiting until Spectrum API starts
   shell: "sleep 60"
 
 - name: Starting Spectrum WEB
