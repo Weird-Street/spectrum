@@ -5,9 +5,11 @@ const pressEscape = () =>
   cy.get('[data-cy="modal-container"]').trigger('keydown', { keyCode: 27 });
 
 const communityBeforeUrlIsValid = () =>
-  cy.url().should('eq', 'http://localhost:3000/spectrum?tab=posts');
+  cy.url().should('eq', 'http://staging.weirdstreet.com/spectrum?tab=posts');
 const channelBeforeUrlIsValid = () =>
-  cy.url().should('eq', 'http://localhost:3000/spectrum/general?tab=posts');
+  cy
+    .url()
+    .should('eq', 'http://staging.weirdstreet.com/spectrum/general?tab=posts');
 
 describe.skip('thread modal route', () => {
   const threadSlider = () => cy.get('[data-cy="modal-container"]');
@@ -21,7 +23,7 @@ describe.skip('thread modal route', () => {
     threadSlider().should('be.visible');
     cy.url(
       'eq',
-      'http://localhost:3000/spectrum/private/yet-another-thread~thread-6'
+      'http://staging.weirdstreet.com/spectrum/private/yet-another-thread~thread-6'
     );
 
     pressEscape();
@@ -38,7 +40,7 @@ describe.skip('thread modal route', () => {
     threadSlider().should('be.visible');
     cy.url(
       'eq',
-      'http://localhost:3000/spectrum/private/yet-another-thread~thread-6'
+      'http://staging.weirdstreet.com/spectrum/private/yet-another-thread~thread-6'
     );
 
     cy.get('[data-cy="overlay"]').click(200, 200, { force: true });
@@ -55,7 +57,7 @@ describe.skip('thread modal route', () => {
     threadSlider().should('be.visible');
     cy.url(
       'eq',
-      'http://localhost:3000/spectrum/private/yet-another-thread~thread-6'
+      'http://staging.weirdstreet.com/spectrum/private/yet-another-thread~thread-6'
     );
 
     threadSliderClose().click();
@@ -72,7 +74,7 @@ describe.skip('thread modal route', () => {
     threadSlider().should('be.visible');
     cy.url(
       'eq',
-      'http://localhost:3000/spectrum/spectrum/general/yet-another-thread~thread-9'
+      'http://staging.weirdstreet.com/spectrum/spectrum/general/yet-another-thread~thread-9'
     );
 
     pressEscape();
@@ -92,7 +94,7 @@ describe.skip('thread modal route', () => {
     pressEscape();
     cy.url(
       'eq',
-      'http://localhost:3000/spectrum/private/yet-another-thread~thread-6'
+      'http://staging.weirdstreet.com/spectrum/private/yet-another-thread~thread-6'
     );
   });
 });

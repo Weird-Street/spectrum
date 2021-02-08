@@ -1,11 +1,11 @@
 {
   "rules": [
-    { "pathname": "/api", "dest": "api.spectrum.chat" },
-    { "pathname": "/api/**", "dest": "api.spectrum.chat" },
-    { "pathname": "/auth", "dest": "api.spectrum.chat" },
-    { "pathname": "/auth/**", "dest": "api.spectrum.chat" },
-    { "pathname": "/websocket", "dest": "api.spectrum.chat" },
-    { "pathname": "/websocket/**", "dest": "api.spectrum.chat" },
-    { "dest": "hyperion.workers.spectrum.chat" }
+    { "pathname": "/api", "dest": "api.staging.weirdstreet.com" },
+    { "pathname": "/api/**", "dest": "api.staging.weirdstreet.com" },
+    { "pathname": "/auth", "dest": "api.staging.weirdstreet.com" },
+    { "pathname": "/auth/**", "dest": "api.staging.weirdstreet.com" },
+    { "pathname": "/websocket", "dest": "api.staging.weirdstreet.com" },
+    { "pathname": "/websocket/**", "dest": "api.staging.weirdstreet.com" },
+    { "dest": "hyperion.workers.staging.weirdstreet.com" }
   ]
 }

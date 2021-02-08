@@ -8,7 +8,7 @@ export const logout = () => {
       window.location.href =
         process.env.NODE_ENV === 'production'
           ? '/auth/logout'
-          : 'http://localhost:3001/auth/logout';
+          : 'http://staging.weirdstreet.com/auth/logout';
     });
 };
 
@@ -17,7 +17,7 @@ export const setTrackingContexts = async (user: ?GetUserType) => {
 
   // get an anonymized userId for Sentry
   const response = await fetch(
-    `https://anonymize.spectrum.chat/api/anonymize?text=${user.id}`
+    `https://anonymize.staging.weirdstreet.com/api/anonymize?text=${user.id}`
   );
   const { text: id } = await response.json();
   return await setRavenUserContext(id);

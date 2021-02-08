@@ -24,8 +24,10 @@ import {
 
 const IS_PROD = process.env.NODE_ENV === 'production';
 const LOGIN_URL = IS_PROD
-  ? `https://spectrum.chat/auth/twitter?r=https://${window.location.host}`
-  : 'http://localhost:3001/auth/twitter?r=http://localhost:3000';
+  ? `https://staging.weirdstreet.com/auth/twitter?r=https://${
+      window.location.host
+    }`
+  : 'http://staging.weirdstreet.com/auth/twitter?r=http://staging.weirdstreet.com';
 
 const OverviewNumbers = ({ data }) => {
   if (data.loading) return <p>Loading...</p>;
@@ -70,7 +72,7 @@ const OverviewNumbers = ({ data }) => {
     return (
       <Growth>
         <Row>
-          <Neutral>{Math.round(count / usersGrowth.count * 100)}%</Neutral>
+          <Neutral>{Math.round((count / usersGrowth.count) * 100)}%</Neutral>
           <RangeLabel>
             {range} ({count.toLocaleString()})
           </RangeLabel>
@@ -342,8 +344,9 @@ const OverviewNumbers = ({ data }) => {
   );
 };
 
-const OverviewWithData = compose(overviewQuery, displayLoadingState)(
-  OverviewNumbers
-);
+const OverviewWithData = compose(
+  overviewQuery,
+  displayLoadingState
+)(OverviewNumbers);
 
 export default OverviewWithData;

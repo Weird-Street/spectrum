@@ -1,12 +1,12 @@
 {
   "rules": [
-    { "pathname": "/robots.txt", "dest": "robots.alpha.spectrum.chat" },
-    { "pathname": "/api", "dest": "api.alpha.spectrum.chat" },
-    { "pathname": "/api/**", "dest": "api.alpha.spectrum.chat" },
-    { "pathname": "/auth", "dest": "api.alpha.spectrum.chat" },
-    { "pathname": "/auth/**", "dest": "api.alpha.spectrum.chat" },
-    { "pathname": "/websocket", "dest": "api.alpha.spectrum.chat" },
-    { "pathname": "/websocket/**", "dest": "api.alpha.spectrum.chat" },
-    { "dest": "hyperion.alpha.spectrum.chat" }
+    { "pathname": "/robots.txt", "dest": "robots.alpha.staging.weirdstreet.com" },
+    { "pathname": "/api", "dest": "api.alpha.staging.weirdstreet.com" },
+    { "pathname": "/api/**", "dest": "api.alpha.staging.weirdstreet.com" },
+    { "pathname": "/auth", "dest": "api.alpha.staging.weirdstreet.com" },
+    { "pathname": "/auth/**", "dest": "api.alpha.staging.weirdstreet.com" },
+    { "pathname": "/websocket", "dest": "api.alpha.staging.weirdstreet.com" },
+    { "pathname": "/websocket/**", "dest": "api.alpha.staging.weirdstreet.com" },
+    { "dest": "hyperion.alpha.staging.weirdstreet.com" }
   ]
 }
