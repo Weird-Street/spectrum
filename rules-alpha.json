@@ -1,12 +1,12 @@
 {
   "rules": [
-    { "pathname": "/robots.txt", "dest": "robots.alpha.staging.weirdstreet.com" },
-    { "pathname": "/api", "dest": "api.alpha.staging.weirdstreet.com" },
-    { "pathname": "/api/**", "dest": "api.alpha.staging.weirdstreet.com" },
-    { "pathname": "/auth", "dest": "api.alpha.staging.weirdstreet.com" },
-    { "pathname": "/auth/**", "dest": "api.alpha.staging.weirdstreet.com" },
-    { "pathname": "/websocket", "dest": "api.alpha.staging.weirdstreet.com" },
-    { "pathname": "/websocket/**", "dest": "api.alpha.staging.weirdstreet.com" },
-    { "dest": "hyperion.alpha.staging.weirdstreet.com" }
+    { "pathname": "/robots.txt", "dest": "robots.alpha.beta.weirdstreet.com" },
+    { "pathname": "/api", "dest": "api.alpha.beta.weirdstreet.com" },
+    { "pathname": "/api/**", "dest": "api.alpha.beta.weirdstreet.com" },
+    { "pathname": "/auth", "dest": "api.alpha.beta.weirdstreet.com" },
+    { "pathname": "/auth/**", "dest": "api.alpha.beta.weirdstreet.com" },
+    { "pathname": "/websocket", "dest": "api.alpha.beta.weirdstreet.com" },
+    { "pathname": "/websocket/**", "dest": "api.alpha.beta.weirdstreet.com" },
+    { "dest": "hyperion.alpha.beta.weirdstreet.com" }
   ]
 }

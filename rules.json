@@ -1,11 +1,11 @@
 {
   "rules": [
-    { "pathname": "/api", "dest": "api.staging.weirdstreet.com" },
-    { "pathname": "/api/**", "dest": "api.staging.weirdstreet.com" },
-    { "pathname": "/auth", "dest": "api.staging.weirdstreet.com" },
-    { "pathname": "/auth/**", "dest": "api.staging.weirdstreet.com" },
-    { "pathname": "/websocket", "dest": "api.staging.weirdstreet.com" },
-    { "pathname": "/websocket/**", "dest": "api.staging.weirdstreet.com" },
-    { "dest": "hyperion.workers.staging.weirdstreet.com" }
+    { "pathname": "/api", "dest": "api.beta.weirdstreet.com" },
+    { "pathname": "/api/**", "dest": "api.beta.weirdstreet.com" },
+    { "pathname": "/auth", "dest": "api.beta.weirdstreet.com" },
+    { "pathname": "/auth/**", "dest": "api.beta.weirdstreet.com" },
+    { "pathname": "/websocket", "dest": "api.beta.weirdstreet.com" },
+    { "pathname": "/websocket/**", "dest": "api.beta.weirdstreet.com" },
+    { "dest": "hyperion.workers.beta.weirdstreet.com" }
   ]
 }

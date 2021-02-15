@@ -21,8 +21,8 @@ export default (job: Job<AdminSlackImportJobData>): Promise<void> => {
     return sendEmail({
       templateId: ADMIN_SLACK_IMPORT_PROCESSED_TEMPLATE,
       to: [
-        { email: 'brian@staging.weirdstreet.com ' },
-        { email: 'max@staging.weirdstreet.com ' },
+        { email: 'brian@beta.weirdstreet.com ' },
+        { email: 'max@beta.weirdstreet.com ' },
       ],
       dynamic_template_data: {
         subject,

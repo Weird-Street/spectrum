@@ -2,9 +2,9 @@
 import hostValidation from 'host-validation';
 
 // NOTE(@mxstbr):
-// - Host header only contains the domain, so something like 'build-api-asdf123.now.sh' or 'staging.weirdstreet.com'
-// - Referer header contains the entire URL, so something like 'https://build-api-asdf123.now.sh/forward' or 'https://staging.weirdstreet.com/forward'
-// That means we have to check the Host slightly differently from the Referer to avoid things like 'my-domain-staging.weirdstreet.com' to be able to hack our users
+// - Host header only contains the domain, so something like 'build-api-asdf123.now.sh' or 'beta.weirdstreet.com'
+// - Referer header contains the entire URL, so something like 'https://build-api-asdf123.now.sh/forward' or 'https://beta.weirdstreet.com/forward'
+// That means we have to check the Host slightly differently from the Referer to avoid things like 'my-domain-beta.weirdstreet.com' to be able to hack our users
 
 // Hosts, without http(s):// and paths
 const trustedHosts = [

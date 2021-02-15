@@ -34,7 +34,7 @@ const EditingChatInput = (props: Props) => {
     if (props.message.messageType === 'text') return;
 
     setText(null);
-    fetch('https://convert.staging.weirdstreet.com/to', {
+    fetch('https://convert.beta.weirdstreet.com/to', {
       method: 'POST',
       body: props.message.content.body,
     })

@@ -46,10 +46,7 @@ class ThreadListItem extends React.Component<Props> {
 
     return (
       <StyledThreadListItem>
-        <a
-          href={`https://staging.weirdstreet.com/thread/${id}`}
-          target="_blank"
-        >
+        <a href={`https://beta.weirdstreet.com/thread/${id}`} target="_blank">
           <ThreadListItemTitle>{title}</ThreadListItemTitle>
         </a>
         {messageCount > 0 && (
@@ -60,21 +57,21 @@ class ThreadListItem extends React.Component<Props> {
         <ThreadListItemSubtitle>
           By{' '}
           <a
-            href={`https://staging.weirdstreet.com/users/${username}`}
+            href={`https://beta.weirdstreet.com/users/${username}`}
             target="_blank"
           >
             {name}
           </a>{' '}
           ·{' '}
           <a
-            href={`https://staging.weirdstreet.com/${community.slug}`}
+            href={`https://beta.weirdstreet.com/${community.slug}`}
             target="_blank"
           >
             {community.name}
           </a>{' '}
           ·{' '}
           <a
-            href={`https://staging.weirdstreet.com/${community.slug}/${
+            href={`https://beta.weirdstreet.com/${community.slug}/${
               channel.slug
             }`}
             target="_blank"
