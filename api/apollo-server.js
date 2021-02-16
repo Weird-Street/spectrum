@@ -114,7 +114,7 @@ const server = new ProtectedApolloServer({
     },
     tabs: [
       {
-        endpoint: 'http://localhost:3001/api',
+        endpoint: 'http://beta.weirdstreet.com/api',
         query: `{
   user(username: "mxstbr") {
     id

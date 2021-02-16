@@ -34,7 +34,10 @@ export default (
   try {
     return sendEmail({
       templateId: ADMIN_ACTIVE_COMMUNITY_REPORT_TEMPLATE,
-      to: [{ email: 'brian@spectrum.chat ' }, { email: 'max@spectrum.chat ' }],
+      to: [
+        { email: 'brian@beta.weirdstreet.com ' },
+        { email: 'max@beta.weirdstreet.com ' },
+      ],
       dynamic_template_data: {
         subject: `Active Community Report: ${month} ${day}, ${year}`,
         data: {
