@@ -1,0 +1,23 @@
+---
+
+- name: Create a directory if it does not exist
+  file:
+    path: "{{ project_path }}/{{ git_hash }}"
+    state: directory
+    mode: '0755'
+  tags:
+    - copy_files
+
+- name: Copy tarball of app to remote
+  copy:
+    src: "{{ git_hash }}.tar"
+    dest: "{{ project_path }}/{{ git_hash }}.tar"
+    mode: '0744'
+  tags:
+    - copy_files
+
+- name: Extract the tarball
+  command:
+    cmd: "tar -xvf {{ project_path }}/{{ git_hash }}.tar -C {{ project_path }}/{{ git_hash }}"
+  tags:
+    - copy_files

@@ -1,17 +1,51 @@
-language: node_js
-node_js:
-  - 12
+os: linux
+dist: bionic
+language: python
+python: "2.7"
+
+before_install:
+  - sudo apt-get update -qq
+#  - sudo apt-get install -qq python-apt
+
+install:
+  - echo "================ install Ansible"
+#  - pip install ansible==1.9.1
+  - sudo apt-get install -qq -y ansible
+  - ansible --version
+
+before_script:
+  - echo "=============== before script"
+  - echo $DEPLOY_SSH_KEY_BASE64
+  - echo "[weirdstreet]" > .travisci/inventory
+  - echo "${SSH_HOST} ansible_user=${SSH_USER}" >> .travisci/inventory
+  - cat .travisci/inventory
+  - |
+    if [ -z ${DEPLOY_SSH_KEY_BASE64+x} ]; then
+        echo "Error: DEPLOY_SSH_KEY_BASE64 variable is not set!"
+    else
+        echo ${DEPLOY_SSH_KEY_BASE64} | base64 --decode > /tmp/deploy_rsa
+        chmod 600 /tmp/deploy_rsa
+        # eval `ssh-agent -s`
+        # ssh-add /tmp/deploy_rsa
+    fi
+
+script:
+      - echo "==================Script run"
+      - echo ${DEPLOY_SSH_KEY_BASE64}
+      - export GIT_HASH=$(git rev-parse --short HEAD)
+      - export PREVIOUS_GIT_HASH=$(git rev-parse --short HEAD^1)
+      - echo "GIT_HASH=${GIT_HASH}"
+      - echo "PREVIOUS_GIT_HASH=${PREVIOUS_GIT_HASH}"
+      - git archive --format=tar ${GIT_HASH} > .travisci/roles/copy_files/files/${GIT_HASH}.tar
+      - sudo sed -i 's/#host_key_checking = False/host_key_checking = False/g' /etc/ansible/ansible.cfg
+      - ansible-playbook -i .travisci/inventory -e git_hash=${GIT_HASH} -e previous_git_hash=${PREVIOUS_GIT_HASH} --key-file /tmp/deploy_rsa .travisci/deploy.yml
+after_success:
+    - echo "==========End after success script"
+
 branches:
   only:
     - alpha
     - cicd
-before_script:
-  - node shared/install-dependencies.js
-script:
-  - yarn run build:web
-deploy:
-  skip_cleanup: true
-  provider: firebase
-  token:
-    secure: Goy+u2wMHddeyvGBR64JeepbM0HbDdoSNirX+TnbkURo1KnUW7RQ0dCaRE2UMV7gQpspaDaJQ+H9CtKj7FrSbIaAidnLuNI2vUbVBjh5bVEXKd0OY6vxanDtainXeXnzwVvIKVWxEeYQyWiv2d2NXiLNqsLTEcs6v2gY7YwISoONtv3reXTd2eN4uGfLe4zdM26F41l95hDMBqhlI1LuSq41irrvlogWLwIUiL96OHZ9+yxg6F0Ai0cC9O+UUlZn6BLvBK/8lI9fbdEEDHSuFEFqdNiA/yvjaGe1U7xsxSvLoyX5PnH4NCN78mmblw+pwyxbA1Gg2nwwZxywJG0MdocYwF1704t8wqEJROKrIFs0Fa1sEf38nxqhCRJmKtG6gy4SzV9f+CbbrXH5ANm0V7q6mg+5lpgKb2kuXERdX8Oyr+2nEbVWKtDQ80REAnSyHYhke/78TXlExAb0pK2smPSB3CqfE1qmIAQEiOGFJUgodd6IoGjx+sCBuuiw8pqbtQPsYGE6WqC0GrT6nOnxNF8Ne8KxOlGSy5aHO5fmGKsqnqxskvxtXapl88SmPuaEtlQ4Q04/sQFKEIVTiSp8lKPV79g8tRCWXR7q5VI1GlOpJQIIqc9Ipe2UIioy4hmHdocvZLyUAANYQsiFToZcjk0GWIugZU9AjYMUP9qb9N0=
-message: "The Wierd Street has been deployed"
+    
+addons:
+  ssh_known_hosts: ${SSH_HOST}

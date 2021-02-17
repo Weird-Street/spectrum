@@ -1,0 +1,27 @@
+---
+- name: Kill all Spectrum WEB and API processes
+  shell: "docker exec weirdstreet pkill node; sleep 10; docker exec weirdstreet ps aufx"
+
+- name: Change the symlink to the app folder
+  shell: "rm -rf {{ project_path }}/app; cd {{ project_path }}; sudo ln -s ./{{ git_hash }} app"
+
+- name: Cleanup old deployments except the laster two
+  shell: |
+    rm -rf `ls | grep -v "app\|{{ git_hash }}\|{{ previous_git_hash }}"`
+  args:
+    chdir: "{{ project_path }}"
+
+- name: Yarn install
+  shell: "docker exec weirdstreet yarn install"
+
+#- name: Install Node dependencies
+#  shell: "docker exec weirdstreet  node shared/install-dependencies.js"
+
+- name: Starting Spectrum API
+  shell: "docker exec weirdstreet yarn run dev:api &"
+
+- name: Waiting until Spectrum API starts
+  shell: "sleep 60"
+
+- name: Starting Spectrum WEB
+  shell: "docker exec weirdstreet yarn run dev:web &"
