@@ -34,7 +34,10 @@ self.addEventListener('push', function(event) {
           if (
             windowClient.focused &&
             // eslint-disable-next-line
-            !(self.registration.scope.indexOf('http://localhost:3000') === 0)
+            !(
+              self.registration.scope.indexOf('http://beta.weirdstreet.com') ===
+              0
+            )
           ) {
             return;
           }
@@ -77,13 +80,13 @@ self.addEventListener('notificationclick', function(event) {
         includeUncontrolled: true,
       })
       .then(function(clientList) {
-        // If there is an open Spectrum.chat window navigate to the notification href
+        // If there is an open beta.weirdstreet.com window navigate to the notification href
         if (clientList.length > 0) {
           return clientList[0]
             .focus()
             .then(client => client.navigate(urlToOpen));
         }
-        // If there's no open Spectrum.chat window open a new one
+        // If there's no open beta.weirdstreet.com window open a new one
         // eslint-disable-next-line
         return self.clients.openWindow(urlToOpen);
       })

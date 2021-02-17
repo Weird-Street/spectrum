@@ -37,3 +37,4 @@ cacert
 .env
 .env.*
 .idea
+/.vs
