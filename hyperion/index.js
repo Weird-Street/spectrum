@@ -37,7 +37,7 @@ addSecurityMiddleware(app, { enableNonce: true, enableCSP: true });
 app.use(
   ['/api', '/api/**'],
   createProxyMiddleware({
-    target: 'https://api.staging.weirdstreet.com',
+    target: 'https://api.spectrum.chat',
     changeOrigin: true,
   })
 );
@@ -45,7 +45,7 @@ app.use(
 app.use(
   ['/auth', '/auth/**'],
   createProxyMiddleware({
-    target: 'https://api.staging.weirdstreet.com',
+    target: 'https://api.spectrum.chat',
     changeOrigin: true,
   })
 );
@@ -53,7 +53,7 @@ app.use(
 app.use(
   ['/websocket', '/websocket/**'],
   createProxyMiddleware({
-    target: 'https://api.staging.weirdstreet.com',
+    target: 'https://api.spectrum.chat',
     changeOrigin: true,
     ws: true,
   })
@@ -121,7 +121,7 @@ app.use(cors);
 // so let's patch that through to it!
 if (process.env.NODE_ENV === 'development') {
   app.use('/sockjs-node', (req: express$Request, res: express$Response) => {
-    res.redirect(301, `http://staging.weirdstreet.com${req.path}`);
+    res.redirect(301, `http://localhost:3000${req.path}`);
   });
 }
 

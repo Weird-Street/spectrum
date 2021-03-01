@@ -28,7 +28,7 @@ export const ErrorView = (props: Props) => {
           <Heading>{heading}</Heading>
           <Description>{subheading}</Description>
           <ActionsRow>
-            <OutlineButton href={'mailto:hi@staging.weirdstreet.com'}>
+            <OutlineButton href={'mailto:hi@spectrum.chat'}>
               Contact us
             </OutlineButton>
             <PrimaryButton to={'/'}>Go home</PrimaryButton>

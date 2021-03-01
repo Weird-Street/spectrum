@@ -4,7 +4,7 @@ import webPush from 'web-push';
 
 try {
   webPush.setVapidDetails(
-    'https://staging.weirdstreet.com',
+    'https://spectrum.chat',
     process.env.VAPID_PUBLIC_KEY,
     process.env.VAPID_PRIVATE_KEY
   );

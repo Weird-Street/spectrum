@@ -24,10 +24,8 @@ import {
 
 const IS_PROD = process.env.NODE_ENV === 'production';
 const LOGIN_URL = IS_PROD
-  ? `https://staging.weirdstreet.com/auth/twitter?r=https://${
-      window.location.host
-    }`
-  : 'http://staging.weirdstreet.com/auth/twitter?r=http://staging.weirdstreet.com';
+  ? `https://spectrum.chat/auth/twitter?r=https://${window.location.host}`
+  : 'http://localhost:3001/auth/twitter?r=http://localhost:3000';
 
 const OverviewNumbers = ({ data }) => {
   if (data.loading) return <p>Loading...</p>;

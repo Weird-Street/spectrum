@@ -15,7 +15,7 @@ export default async (thread: DBThread, _: any, ctx: GraphQLContext) => {
     title: watercooler
       ? `Chat with the ${community.name} community`
       : content.title,
-    footer: `staging.weirdstreet.com/${community.slug}`,
+    footer: `spectrum.chat/${community.slug}`,
   });
 
   if (!imageUrl) return null;

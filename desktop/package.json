@@ -1,10 +1,10 @@
 {
   "name": "Spectrum",
   "description": "The community platform for the future.",
-  "homepage": "https://staging.weirdstreet.com",
+  "homepage": "https://spectrum.chat",
   "author": {
     "name": "Space Program Inc.",
-    "email": "hi@staging.weirdstreet.com"
+    "email": "hi@spectrum.chat"
   },
   "repository": "https://github.com/withspectrum/spectrum",
   "version": "1.0.5",

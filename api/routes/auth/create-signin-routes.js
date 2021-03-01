@@ -13,8 +13,8 @@ import isSpectrumUrl from '../../utils/is-spectrum-url';
 
 const IS_PROD = process.env.NODE_ENV === 'production';
 const FALLBACK_URL = IS_PROD
-  ? 'https://staging.weirdstreet.com/home'
-  : 'http://staging.weirdstreet.com/home';
+  ? 'https://spectrum.chat/home'
+  : 'http://localhost:3000/home';
 
 type Strategy = 'twitter' | 'facebook' | 'github' | 'google';
 
@@ -43,7 +43,7 @@ export const createSigninRoutes = (
       passport.authenticate(strategy, {
         failureRedirect: IS_PROD
           ? '/new/user'
-          : 'http://staging.weirdstreet.com/new/user',
+          : 'http://localhost:3000/new/user',
       }),
       (req: express$Request, res: express$Response) => {
         // $FlowIssue

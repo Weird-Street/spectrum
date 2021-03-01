@@ -19,7 +19,7 @@ type Options = {
 
 const defaultOptions = {
   from: {
-    email: 'hi@staging.weirdstreet.com',
+    email: 'hi@spectrum.chat',
     name: 'Spectrum',
   },
   tracking_settings: {

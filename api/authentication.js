@@ -47,8 +47,8 @@ const GITHUB_OAUTH_CLIENT_ID = IS_PROD
   : 'ed3e924f4a599313c83b';
 
 const CALLBACK_BASE = IS_PROD
-  ? 'https://staging.weirdstreet.com'
-  : 'http://staging.weirdstreet.com';
+  ? 'https://spectrum.chat'
+  : 'http://localhost:3001';
 
 const isSerializedJSON = (str: string) =>
   str[0] === '{' && str[str.length - 1] === '}';

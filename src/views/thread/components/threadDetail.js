@@ -105,7 +105,7 @@ class ThreadDetailPure extends React.Component<Props, State> {
       body: null,
     });
 
-    fetch('https://convert.staging.weirdstreet.com/to', {
+    fetch('https://convert.spectrum.chat/to', {
       method: 'POST',
       body: thread.content.body,
     })
