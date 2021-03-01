@@ -51,7 +51,7 @@ export default (props: Props) => {
 
     if (show) {
       setPreviewBody(null);
-      fetch('https://convert.beta.weirdstreet.com/from', {
+      fetch('https://convert.staging.weirdstreet.com/from', {
         method: 'POST',
         body,
       })

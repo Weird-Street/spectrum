@@ -24,10 +24,10 @@ import {
 
 const IS_PROD = process.env.NODE_ENV === 'production';
 const LOGIN_URL = IS_PROD
-  ? `https://beta.weirdstreet.com/auth/twitter?r=https://${
+  ? `https://staging.weirdstreet.com/auth/twitter?r=https://${
       window.location.host
     }`
-  : 'http://beta.weirdstreet.com/auth/twitter?r=http://beta.weirdstreet.com';
+  : 'http://staging.weirdstreet.com/auth/twitter?r=http://staging.weirdstreet.com';
 
 const OverviewNumbers = ({ data }) => {
   if (data.loading) return <p>Loading...</p>;

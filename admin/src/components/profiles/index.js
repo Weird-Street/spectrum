@@ -24,7 +24,7 @@ export const CommunityProfile = ({ community }) => {
         src={community.profilePhoto}
       />
       <ProfileHeaderLink
-        to={`https://beta.weirdstreet.com/${community.slug}`}
+        to={`https://staging.weirdstreet.com/${community.slug}`}
         target={'_blank'}
       >
         <ProfileHeaderMeta>
@@ -48,7 +48,7 @@ export const MiniUserProfile = ({ user }) => {
     <MiniProfileHeader>
       <CommunityAvatar size={16} radius={36} user src={user.profilePhoto} />
       <ProfileHeaderLink
-        to={`https://beta.weirdstreet.com/users/${user.username}`}
+        to={`https://staging.weirdstreet.com/users/${user.username}`}
         target={'_blank'}
       >
         <MiniProfileHeaderMeta>

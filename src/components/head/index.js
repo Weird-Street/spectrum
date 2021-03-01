@@ -21,7 +21,7 @@ export default ({ title, description, image, type, children }: Props) => {
         content={
           image
             ? image
-            : 'https://beta.weirdstreet.com/img/apple-icon-144x144-precomposed.png'
+            : 'https://staging.weirdstreet.com/img/apple-icon-144x144-precomposed.png'
         }
       />
       <meta property="og:title" content={title} />
@@ -32,7 +32,7 @@ export default ({ title, description, image, type, children }: Props) => {
         content={
           image
             ? image
-            : 'https://beta.weirdstreet.com/img/apple-icon-144x144-precomposed.png'
+            : 'https://staging.weirdstreet.com/img/apple-icon-144x144-precomposed.png'
         }
       />
       {children}

@@ -148,7 +148,7 @@ class UpsellNewUser extends Component {
 
           <ButtonRow>
             <a
-              href={`https://www.facebook.com/sharer/sharer.php?u=https://beta.weirdstreet.com&t=Come hang out with me on Spectrum, a new place on the internet for communities!`}
+              href={`https://www.facebook.com/sharer/sharer.php?u=https://staging.weirdstreet.com&t=Come hang out with me on Spectrum, a new place on the internet for communities!`}
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -157,7 +157,7 @@ class UpsellNewUser extends Component {
               </Button>
             </a>
             <a
-              href={`https://twitter.com/share?text=Come hang out with me on @withspectrum, a new place on the internet for communities!&url=https://beta.weirdstreet.com`}
+              href={`https://twitter.com/share?text=Come hang out with me on @withspectrum, a new place on the internet for communities!&url=https://staging.weirdstreet.com`}
               target="_blank"
               rel="noopener noreferrer"
             >

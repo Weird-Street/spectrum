@@ -528,7 +528,7 @@ class CreateCommunityForm extends React.Component<Props, State> {
             onBlur={this.checkSuggestedCommunities}
             dataCy="community-slug-input"
           >
-            beta.weirdstreet.com/
+            staging.weirdstreet.com/
           </UnderlineInput>
 
           {slugTaken && (

@@ -43,7 +43,7 @@ class DownloadDataForm extends React.Component<Props> {
             href={
               process.env.NODE_ENV === 'production'
                 ? '/api/user.json'
-                : 'http://beta.weirdstreet.com/api/user.json'
+                : 'http://staging.weirdstreet.com/api/user.json'
             }
             download
           >

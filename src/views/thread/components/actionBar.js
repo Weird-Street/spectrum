@@ -103,7 +103,7 @@ class ActionBar extends React.Component<Props> {
                       <a
                         href={`https://www.facebook.com/sharer/sharer.php?t=${encodeURIComponent(
                           thread.content.title
-                        )}&u=https://beta.weirdstreet.com${getThreadLink(
+                        )}&u=https://staging.weirdstreet.com${getThreadLink(
                           thread
                         )}`}
                         target="_blank"
@@ -117,7 +117,7 @@ class ActionBar extends React.Component<Props> {
                   <Tooltip content={'Tweet'}>
                     <ShareButton twitter data-cy="thread-tweet-button">
                       <a
-                        href={`https://twitter.com/share?url=https://beta.weirdstreet.com${getThreadLink(
+                        href={`https://twitter.com/share?url=https://staging.weirdstreet.com${getThreadLink(
                           thread
                         )}&text=${encodeURIComponent(
                           thread.content.title

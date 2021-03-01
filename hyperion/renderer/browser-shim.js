@@ -4,7 +4,7 @@
 global.window = {
   location: {
     protocol: 'https:',
-    host: 'beta.weirdstreet.com',
+    host: 'staging.weirdstreet.com',
     hash: '',
   },
   addEventListener: () => {},

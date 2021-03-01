@@ -4,7 +4,7 @@
 export const IS_PROD =
   process.env.NODE_ENV === 'production' && !process.env.FORCE_DEV;
 // In production the API is at the same URL, in development it's at a different port
-export const API_URI = IS_PROD ? '/api' : 'http://beta.weirdstreet.com/api';
+export const API_URI = IS_PROD ? '/api' : 'http://staging.weirdstreet.com/api';
 export const WS_URI = IS_PROD
   ? `wss://${window.location.host}/websocket`
-  : 'ws://beta.weirdstreet.com/websocket';
+  : 'ws://staging.weirdstreet.com/websocket';

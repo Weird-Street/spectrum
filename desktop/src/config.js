@@ -9,10 +9,10 @@ const { resolve } = require('path');
 module.exports = {
   APP_NAME: 'Spectrum',
   APP_VERSION: app.getVersion(),
-  APP_REMOTE_URL: 'https://beta.weirdstreet.com/login',
-  APP_DEV_URL: 'http://beta.weirdstreet.com/login',
-  APP_REMOTE_HOME_URL: 'https://beta.weirdstreet.com',
-  APP_DEV_HOME_URL: 'http://beta.weirdstreet.com',
+  APP_REMOTE_URL: 'https://staging.weirdstreet.com/login',
+  APP_DEV_URL: 'http://staging.weirdstreet.com/login',
+  APP_REMOTE_HOME_URL: 'https://staging.weirdstreet.com',
+  APP_DEV_HOME_URL: 'http://staging.weirdstreet.com',
 
   GITHUB_URL: 'https://github.com/withspectrum/spectrum',
   GITHUB_URL_LICENSE:

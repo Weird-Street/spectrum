@@ -264,7 +264,7 @@ class CommunityWithData extends React.Component<Props, State> {
             Name
           </Input>
           <UnderlineInput defaultValue={slug} disabled>
-            beta.weirdstreet.com/
+            staging.weirdstreet.com/
           </UnderlineInput>
 
           {nameError && (

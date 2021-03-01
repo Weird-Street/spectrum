@@ -108,7 +108,7 @@ export default async (job: Job<ThreadNotificationJobData>) => {
               channel.name
             }:`,
             author_name: `${author.name} (@${author.username})`,
-            author_link: `https://beta.weirdstreet.com/users/${
+            author_link: `https://staging.weirdstreet.com/users/${
               author.username
             }`,
             author_icon: signedAuthor.profilePhoto,
@@ -116,25 +116,27 @@ export default async (job: Job<ThreadNotificationJobData>) => {
               channel.name
             }:`,
             title: truncateString(incomingThread.content.title, 80),
-            title_link: `https://beta.weirdstreet.com/thread/${
+            title_link: `https://staging.weirdstreet.com/thread/${
               incomingThread.id
             }`,
             text: truncateString(plainTextBody, 140),
             footer: 'Spectrum',
             footer_icon:
-              'https://beta.weirdstreet.com/img/apple-icon-57x57-precomposed.png',
+              'https://staging.weirdstreet.com/img/apple-icon-57x57-precomposed.png',
             ts: new Date(incomingThread.createdAt).getTime() / 1000,
             color: '#4400CC',
             actions: [
               {
                 type: 'button',
                 text: 'View conversation',
-                url: `https://beta.weirdstreet.com/thread/${incomingThread.id}`,
+                url: `https://staging.weirdstreet.com/thread/${
+                  incomingThread.id
+                }`,
               },
               {
                 type: 'button',
                 text: `Message ${author.name}`,
-                url: `https://beta.weirdstreet.com/users/${author.username}`,
+                url: `https://staging.weirdstreet.com/users/${author.username}`,
               },
             ],
           },

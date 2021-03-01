@@ -16,7 +16,7 @@ export const ProfileHeader = ({ user }: any) => {
       </Row>
 
       <Link
-        to={`https://beta.weirdstreet.com/users/${user.username}`}
+        to={`https://staging.weirdstreet.com/users/${user.username}`}
         target="_blank"
         rel="noopener noreferrer"
       >
@@ -38,7 +38,7 @@ export const CommunityProfileHeader = ({ community }) => {
       </Row>
 
       <Link
-        to={`https://beta.weirdstreet.com/${community.slug}`}
+        to={`https://staging.weirdstreet.com/${community.slug}`}
         target="_blank"
         rel="noopener noreferrer"
       >

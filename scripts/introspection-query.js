@@ -1,7 +1,7 @@
 const fetch = require('node-fetch');
 const fs = require('fs');
 
-fetch(`http://beta.weirdstreet.com/api`, {
+fetch(`http://staging.weirdstreet.com/api`, {
   method: 'POST',
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify({
