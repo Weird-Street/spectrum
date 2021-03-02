@@ -103,9 +103,7 @@ class ActionBar extends React.Component<Props> {
                       <a
                         href={`https://www.facebook.com/sharer/sharer.php?t=${encodeURIComponent(
                           thread.content.title
-                        )}&u=https://beta.weirdstreet.com${getThreadLink(
-                          thread
-                        )}`}
+                        )}&u=https://beta.weirdstreet.com${getThreadLink(thread)}`}
                         target="_blank"
                         rel="noopener noreferrer"
                       >

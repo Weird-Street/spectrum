@@ -8,14 +8,5 @@ export const isViewingMarketingPage = (
 
   if (isRoot && (!currentUser || !currentUser.id)) return true;
 
-  return (
-    viewing === '/home' ||
-    viewing === '/about' ||
-    viewing === '/code-of-conduct' ||
-    viewing === '/contact' ||
-    viewing === '/support' ||
-    viewing === '/faq' ||
-    viewing === '/features' ||
-    viewing === '/apps'
-  );
+  return viewing === '/code-of-conduct';
 };

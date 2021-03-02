@@ -27,10 +27,7 @@ export default (job: Job<AdminToxicContentEmailJobData>): Promise<void> => {
   try {
     return sendEmail({
       templateId: ADMIN_TOXIC_MESSAGE_TEMPLATE,
-      to: [
-        { email: 'brian@beta.weirdstreet.com ' },
-        { email: 'max@beta.weirdstreet.com ' },
-      ],
+      to: [{ email: 'brian@beta.weirdstreet.com ' }, { email: 'max@beta.weirdstreet.com ' }],
       dynamic_template_data: {
         subject,
         preheader: text,

@@ -39,16 +39,16 @@ describe('Community Signup View', () => {
 
   it('should render', () => {
     cy.get('[data-cy="community-login-page"]').should('be.visible');
-    cy.get(
-      '[href*="/auth/github?r=http://beta.weirdstreet.com:3000/spectrum"]'
-    ).should('be.visible');
+    cy.get('[href*="/auth/github?r=http://beta.weirdstreet.com:3000/spectrum"]').should(
+      'be.visible'
+    );
     cy.get('[href*="github.com/withspectrum/code-of-conduct"]').should(
       'be.visible'
     );
 
-    cy.get(
-      '[href*="/login?r=http://beta.weirdstreet.com:3000/spectrum"]'
-    ).should('be.visible');
+    cy.get('[href*="/login?r=http://beta.weirdstreet.com:3000/spectrum"]').should(
+      'be.visible'
+    );
   });
 });
 
@@ -56,9 +56,9 @@ describe('Redirect paths', () => {
   it('should preserve community redirect paths', () => {
     cy.visit('/spectrum/login');
     cy.get('[data-cy="community-login-page"]').should('be.visible');
-    cy.get(
-      '[href*="/auth/github?r=http://beta.weirdstreet.com:3000/spectrum"]'
-    ).should('be.visible');
+    cy.get('[href*="/auth/github?r=http://beta.weirdstreet.com:3000/spectrum"]').should(
+      'be.visible'
+    );
     cy.get('[href*="github.com/withspectrum/code-of-conduct"]').should(
       'be.visible'
     );
@@ -67,21 +67,21 @@ describe('Redirect paths', () => {
       .should('be.visible')
       .click();
 
-    cy.get(
-      '[href*="/auth/twitter?r=http://beta.weirdstreet.com:3000/spectrum"]'
-    ).should('be.visible');
-    cy.get(
-      '[href*="/auth/facebook?r=http://beta.weirdstreet.com:3000/spectrum"]'
-    ).should('be.visible');
-    cy.get(
-      '[href*="/auth/google?r=http://beta.weirdstreet.com:3000/spectrum"]'
-    ).should('be.visible');
-    cy.get(
-      '[href*="/auth/github?r=http://beta.weirdstreet.com:3000/spectrum"]'
-    ).should('be.visible');
-    cy.get(
-      '[href*="/new/user?r=http://beta.weirdstreet.com:3000/spectrum"]'
-    ).should('be.visible');
+    cy.get('[href*="/auth/twitter?r=http://beta.weirdstreet.com:3000/spectrum"]').should(
+      'be.visible'
+    );
+    cy.get('[href*="/auth/facebook?r=http://beta.weirdstreet.com:3000/spectrum"]').should(
+      'be.visible'
+    );
+    cy.get('[href*="/auth/google?r=http://beta.weirdstreet.com:3000/spectrum"]').should(
+      'be.visible'
+    );
+    cy.get('[href*="/auth/github?r=http://beta.weirdstreet.com:3000/spectrum"]').should(
+      'be.visible'
+    );
+    cy.get('[href*="/new/user?r=http://beta.weirdstreet.com:3000/spectrum"]').should(
+      'be.visible'
+    );
   });
 
   it('should preserve thread redirect paths', () => {

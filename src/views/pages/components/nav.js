@@ -14,17 +14,11 @@ import {
   Tabs,
   LogoTab,
   MenuTab,
-  SupportTab,
-  FeaturesTab,
   LoginTab,
-  AppsTab,
   AuthTab,
   LogoLink,
   AuthLink,
   LoginLink,
-  SupportLink,
-  FeaturesLink,
-  AppsLink,
   ExploreLink,
   MenuContainer,
   MenuOverlay,
@@ -70,30 +64,6 @@ class Nav extends React.Component<Props, State> {
             <Logo />
             <Icon glyph={'logo'} />
           </LogoTab>
-          <FeaturesTab
-            dark={this.props.dark}
-            selected={this.props.location === 'features'}
-            to="/features"
-            data-cy="navigation-splash-features"
-          >
-            Features
-          </FeaturesTab>
-          <AppsTab
-            dark={this.props.dark}
-            selected={this.props.location === 'apps'}
-            to="/apps"
-            data-cy="navigation-splash-apps"
-          >
-            Apps
-          </AppsTab>
-          <SupportTab
-            dark={this.props.dark}
-            selected={this.props.location === 'support'}
-            to="/support"
-            data-cy="navigation-splash-support"
-          >
-            Support
-          </SupportTab>
           {this.props.currentUser ? (
             <AuthTab dark={this.props.dark}>
               <Link to={'/'}>
@@ -141,21 +111,6 @@ class Nav extends React.Component<Props, State> {
               <LogoLink to="/">
                 <Logo />
               </LogoLink>
-              <FeaturesLink
-                to="/features"
-                selected={this.props.location === 'features'}
-              >
-                Features
-              </FeaturesLink>
-              <AppsLink to="/apps" selected={this.props.location === 'apps'}>
-                Apps
-              </AppsLink>
-              <SupportLink
-                to="/support"
-                selected={this.props.location === 'support'}
-              >
-                Support
-              </SupportLink>
               <ExploreLink
                 to="/explore"
                 selected={this.props.location === 'explore'}

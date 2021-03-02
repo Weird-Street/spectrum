@@ -108,17 +108,13 @@ export default async (job: Job<ThreadNotificationJobData>) => {
               channel.name
             }:`,
             author_name: `${author.name} (@${author.username})`,
-            author_link: `https://beta.weirdstreet.com/users/${
-              author.username
-            }`,
+            author_link: `https://beta.weirdstreet.com/users/${author.username}`,
             author_icon: signedAuthor.profilePhoto,
             pretext: `New conversation published in ${community.name} #${
               channel.name
             }:`,
             title: truncateString(incomingThread.content.title, 80),
-            title_link: `https://beta.weirdstreet.com/thread/${
-              incomingThread.id
-            }`,
+            title_link: `https://beta.weirdstreet.com/thread/${incomingThread.id}`,
             text: truncateString(plainTextBody, 140),
             footer: 'Spectrum',
             footer_icon:

@@ -14,10 +14,7 @@ describe('Toasts and url query paramaters', () => {
     url.searchParams.append('toastMessage', toastMessage);
     cy.visit(url.toString());
     cy.get('[data-cy="toast-success"]').contains(toastMessage);
-    cy.url().should(
-      'eq',
-      'http://beta.weirdstreet.com:3000/users/mxstbr/settings'
-    );
+    cy.url().should('eq', 'http://beta.weirdstreet.com:3000/users/mxstbr/settings');
   });
 
   it('should not show toast if no toastType', () => {
@@ -25,10 +22,7 @@ describe('Toasts and url query paramaters', () => {
     url.searchParams.append('toastMessage', toastMessage);
     cy.visit(url.toString());
     cy.get('[data-cy="toast-success"]').should('have.length', 0);
-    cy.url().should(
-      'eq',
-      'http://beta.weirdstreet.com:3000/users/mxstbr/settings'
-    );
+    cy.url().should('eq', 'http://beta.weirdstreet.com:3000/users/mxstbr/settings');
   });
 
   it('should not show toast if no toastMessage', () => {
@@ -39,10 +33,7 @@ describe('Toasts and url query paramaters', () => {
       'have.length',
       0
     );
-    cy.url().should(
-      'eq',
-      'http://beta.weirdstreet.com:3000/users/mxstbr/settings'
-    );
+    cy.url().should('eq', 'http://beta.weirdstreet.com:3000/users/mxstbr/settings');
   });
 
   it('should not show toast if invalid toastType', () => {
@@ -53,10 +44,7 @@ describe('Toasts and url query paramaters', () => {
       'have.length',
       0
     );
-    cy.url().should(
-      'eq',
-      'http://beta.weirdstreet.com:3000/users/mxstbr/settings'
-    );
+    cy.url().should('eq', 'http://beta.weirdstreet.com:3000/users/mxstbr/settings');
   });
 
   it('should preserve existing query parameters', () => {

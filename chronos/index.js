@@ -54,7 +54,7 @@ debug('🗄 Crons open for business');
 
 // NOTE(@mxstbr): 511 is the default value, have to add that so flow
 // doesn't complain. Ref: https://nodejs.org/api/net.html#net_server_listen_port_host_backlog_callback
-server.listen(PORT, 'localhost', 511, () => {
+server.listen(PORT, 'beta.weirdstreet.com', 511, () => {
   // prettier-ignore
   debug(`💉 Healthcheck server running at ${server.address().address}:${server.address().port}`);
 });

@@ -13,7 +13,7 @@ module.exports = async () => {
   debug(`run all migrations over database "testing"`);
   await migrate({
     driver: 'rethinkdbdash',
-    host: 'localhost',
+    host: 'beta.weirdstreet.com',
     port: 28015,
     migrationsDirectory: path.resolve(__dirname, '../../api/migrations'),
     db: 'testing',

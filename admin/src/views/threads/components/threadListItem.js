@@ -56,24 +56,16 @@ class ThreadListItem extends React.Component<Props> {
         )}
         <ThreadListItemSubtitle>
           By{' '}
-          <a
-            href={`https://beta.weirdstreet.com/users/${username}`}
-            target="_blank"
-          >
+          <a href={`https://beta.weirdstreet.com/users/${username}`} target="_blank">
             {name}
           </a>{' '}
           ·{' '}
-          <a
-            href={`https://beta.weirdstreet.com/${community.slug}`}
-            target="_blank"
-          >
+          <a href={`https://beta.weirdstreet.com/${community.slug}`} target="_blank">
             {community.name}
           </a>{' '}
           ·{' '}
           <a
-            href={`https://beta.weirdstreet.com/${community.slug}/${
-              channel.slug
-            }`}
+            href={`https://beta.weirdstreet.com/${community.slug}/${channel.slug}`}
             target="_blank"
           >
             {channel.name}
