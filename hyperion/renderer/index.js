@@ -40,7 +40,8 @@ const FORCE_DEV = process.env.FORCE_DEV;
 const FIVE_MINUTES = 300;
 const ONE_HOUR = 3600;
 
-if (!IS_PROD || FORCE_DEV) debug('Querying API at beta.weirdstreet.com/api');
+if (!IS_PROD || FORCE_DEV)
+  debug('Querying API at beta.weirdstreet.com:3001/api');
 
 const renderer = (req: express$Request, res: express$Response) => {
   res.setHeader('Content-Type', 'text/html; charset=utf-8');

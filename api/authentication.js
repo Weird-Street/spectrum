@@ -48,7 +48,7 @@ const GITHUB_OAUTH_CLIENT_ID = IS_PROD
 
 const CALLBACK_BASE = IS_PROD
   ? 'https://beta.weirdstreet.com'
-  : 'http://beta.weirdstreet.com';
+  : 'http://beta.weirdstreet.com:3001';
 
 const isSerializedJSON = (str: string) =>
   str[0] === '{' && str[str.length - 1] === '}';

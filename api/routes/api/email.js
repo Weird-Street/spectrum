@@ -20,7 +20,7 @@ import { getChannelsByCommunity, getChannelById } from '../../models/channel';
 
 const rootRedirect = IS_PROD
   ? `https://beta.weirdstreet.com`
-  : `http://beta.weirdstreet.com`;
+  : `http://beta.weirdstreet.com:3000`;
 
 // $FlowIssue
 emailRouter.get('/unsubscribe', async (req, res) => {
@@ -198,7 +198,7 @@ emailRouter.get('/validate', (req, res) => {
                 }/settings?toastType=success&toastMessage=Your email address has been validated!`
               )
             : res.redirect(
-                `http://beta.weirdstreet.com/${
+                `http://beta.weirdstreet.com:3000/${
                   community.slug
                 }/settings?toastType=success&toastMessage=Your email address has been validated!`
               )

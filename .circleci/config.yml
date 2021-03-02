@@ -135,7 +135,7 @@ jobs:
       - run: *start-api
       - run: *start-web
       # Wait for the API and webserver to start
-      - run: ./node_modules/.bin/wait-on http://beta.weirdstreet.com http://beta.weirdstreet.com
+      - run: ./node_modules/.bin/wait-on http://beta.weirdstreet.com:3000 http://beta.weirdstreet.com:3001
       - run:
           name: Install Cypress
           command: yarn run cypress:install

@@ -12,7 +12,18 @@ export const corsOptions = {
           'https://hyperion.alpha.beta.weirdstreet.com',
           process.env.NOW_URL,
         ].filter(Boolean)
-      : [/localhost/],
+      : [
+          'http://localhost:3000',
+          'http://localhost:3001',
+          'https://localhost:3000',
+          'https://localhost:3001',
+          'https://beta.weirdstreet.com',
+          'https://alpha.beta.weirdstreet.com',
+          'https://admin.beta.weirdstreet.com',
+          'https://hyperion.workers.beta.weirdstreet.com',
+          'https://hyperion.alpha.beta.weirdstreet.com',
+          process.env.NOW_URL,
+        ].filter(Boolean),
   credentials: true,
 };
 

@@ -121,7 +121,7 @@ app.use(cors);
 // so let's patch that through to it!
 if (process.env.NODE_ENV === 'development') {
   app.use('/sockjs-node', (req: express$Request, res: express$Response) => {
-    res.redirect(301, `http://beta.weirdstreet.com${req.path}`);
+    res.redirect(301, `http://beta.weirdstreet.com:3000${req.path}`);
   });
 }
 

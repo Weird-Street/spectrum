@@ -35,8 +35,9 @@ self.addEventListener('push', function(event) {
             windowClient.focused &&
             // eslint-disable-next-line
             !(
-              self.registration.scope.indexOf('http://beta.weirdstreet.com') ===
-              0
+              self.registration.scope.indexOf(
+                'http://beta.weirdstreet.com:3000'
+              ) === 0
             )
           ) {
             return;
