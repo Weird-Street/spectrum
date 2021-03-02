@@ -109,7 +109,7 @@ debug(
 );
 
 // $FlowIssue
-server.listen(PORT, 'localhost', () => {
+server.listen(PORT, 'beta.weirdstreet.com', () => {
   debug(
     `💉 Healthcheck server running at ${server.address().address}:${
       server.address().port

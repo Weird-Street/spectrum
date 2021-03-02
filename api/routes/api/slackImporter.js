@@ -67,12 +67,8 @@ slackRouter.get('/onboarding', (req: any, res: any) => {
     .then(community => community.id)
     .then(id => {
       return IS_PROD
-        ? res.redirect(
-            `https://beta.weirdstreet.com/new/community?s=2&id=${id}`
-          )
-        : res.redirect(
-            `http://beta.weirdstreet.com:3000/new/community?s=2&id=${id}`
-          );
+        ? res.redirect(`https://beta.weirdstreet.com/new/community?s=2&id=${id}`)
+        : res.redirect(`http://beta.weirdstreet.com:3000/new/community?s=2&id=${id}`);
     });
 });
 

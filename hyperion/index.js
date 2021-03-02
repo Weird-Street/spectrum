@@ -207,6 +207,6 @@ process.on('uncaughtException', async err => {
 Loadable.preloadAll().then(() => {
   app.listen(PORT);
   debug(
-    `Hyperion, the server-side renderer, running at http://localhost:${PORT}`
+    `Hyperion, the server-side renderer, running at http://beta.weirdstreet.com:${PORT}`
   );
 });

@@ -30,15 +30,11 @@ self.addEventListener('push', function(event) {
         for (let i = 0; i < windowClients.length; i++) {
           const windowClient = windowClients[i];
           // The user is looking at Spectrum right now abort showing the notification!
-          // (except for if we're on localhost, i.e. in development)
+          // (except for if we're on beta.weirdstreet.com, i.e. in development)
           if (
             windowClient.focused &&
             // eslint-disable-next-line
-            !(
-              self.registration.scope.indexOf(
-                'http://beta.weirdstreet.com:3000'
-              ) === 0
-            )
+            !(self.registration.scope.indexOf('http://beta.weirdstreet.com:3000') === 0)
           ) {
             return;
           }

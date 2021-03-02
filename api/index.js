@@ -90,7 +90,7 @@ apolloServer.installSubscriptionHandlers(httpServer);
 
 httpServer.listen(PORT);
 
-debug(`GraphQL API running at http://localhost:${PORT}/api`);
+debug(`GraphQL API running at http://beta.weirdstreet.com:${PORT}/api`);
 
 process.on('unhandledRejection', async err => {
   console.error('Unhandled rejection', err);

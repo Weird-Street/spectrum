@@ -7,12 +7,7 @@ const pressEscape = () =>
 const communityBeforeUrlIsValid = () =>
   cy.url().should('eq', 'http://beta.weirdstreet.com:3000/spectrum?tab=posts');
 const channelBeforeUrlIsValid = () =>
-  cy
-    .url()
-    .should(
-      'eq',
-      'http://beta.weirdstreet.com:3000/spectrum/general?tab=posts'
-    );
+  cy.url().should('eq', 'http://beta.weirdstreet.com:3000/spectrum/general?tab=posts');
 
 describe.skip('thread modal route', () => {
   const threadSlider = () => cy.get('[data-cy="modal-container"]');

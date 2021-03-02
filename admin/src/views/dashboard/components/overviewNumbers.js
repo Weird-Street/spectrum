@@ -24,9 +24,7 @@ import {
 
 const IS_PROD = process.env.NODE_ENV === 'production';
 const LOGIN_URL = IS_PROD
-  ? `https://beta.weirdstreet.com/auth/twitter?r=https://${
-      window.location.host
-    }`
+  ? `https://beta.weirdstreet.com/auth/twitter?r=https://${window.location.host}`
   : 'http://beta.weirdstreet.com:3001/auth/twitter?r=http://beta.weirdstreet.com:3000';
 
 const OverviewNumbers = ({ data }) => {
@@ -72,7 +70,7 @@ const OverviewNumbers = ({ data }) => {
     return (
       <Growth>
         <Row>
-          <Neutral>{Math.round((count / usersGrowth.count) * 100)}%</Neutral>
+          <Neutral>{Math.round(count / usersGrowth.count * 100)}%</Neutral>
           <RangeLabel>
             {range} ({count.toLocaleString()})
           </RangeLabel>
@@ -344,9 +342,8 @@ const OverviewNumbers = ({ data }) => {
   );
 };
 
-const OverviewWithData = compose(
-  overviewQuery,
-  displayLoadingState
-)(OverviewNumbers);
+const OverviewWithData = compose(overviewQuery, displayLoadingState)(
+  OverviewNumbers
+);
 
 export default OverviewWithData;

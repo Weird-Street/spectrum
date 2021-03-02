@@ -27,12 +27,6 @@ export const ErrorView = (props: Props) => {
           </Emoji>
           <Heading>{heading}</Heading>
           <Description>{subheading}</Description>
-          <ActionsRow>
-            <OutlineButton href={'mailto:hi@beta.weirdstreet.com'}>
-              Contact us
-            </OutlineButton>
-            <PrimaryButton to={'/'}>Go home</PrimaryButton>
-          </ActionsRow>
         </Card>
       </CenteredGrid>
     </ViewGrid>
