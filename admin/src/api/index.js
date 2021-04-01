@@ -15,7 +15,7 @@ const IS_PROD = process.env.NODE_ENV === 'production';
 // In production the API is at the same URL, in development it's at a different port
 const API_URI = IS_PROD
   ? 'https://beta.weirdstreet.com/api'
-  : 'http://beta.weirdstreet.com:3001/api';
+  : 'https://beta.weirdstreet.com:3001/api';
 
 const cache = new InMemoryCache({
   fragmentMatcher: new IntrospectionFragmentMatcher({
@@ -33,7 +33,7 @@ const httpLink = createUploadLink({
 // Websocket link for subscriptions
 const wsLink = new WebSocketLink({
   uri: `${
-    IS_PROD ? `wss://${window.location.host}` : 'ws://beta.weirdstreet.com:3001'
+    IS_PROD ? `wss://${window.location.host}` : 'wss://beta.weirdstreet.com:3001'
   }/websocket`,
   options: {
     reconnect: true,

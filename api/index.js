@@ -77,7 +77,7 @@ app.use('/', (req: express$Request, res: express$Response) => {
   res.redirect(
     process.env.NODE_ENV === 'production' && !process.env.FORCE_DEV
       ? 'https://beta.weirdstreet.com'
-      : 'http://beta.weirdstreet.com:3000'
+      : 'https://beta.weirdstreet.com:3000'
   );
 });
 
@@ -90,7 +90,7 @@ apolloServer.installSubscriptionHandlers(httpServer);
 
 httpServer.listen(PORT);
 
-debug(`GraphQL API running at http://beta.weirdstreet.com:${PORT}/api`);
+debug(`GraphQL API running at https://beta.weirdstreet.com:${PORT}/api`);
 
 process.on('unhandledRejection', async err => {
   console.error('Unhandled rejection', err);
