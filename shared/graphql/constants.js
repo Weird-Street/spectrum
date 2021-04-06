@@ -6,5 +6,5 @@ export const IS_PROD =
 // In production the API is at the same URL, in development it's at a different port
 export const API_URI = IS_PROD ? '/api' : 'https://beta.weirdstreet.com:3001/api';
 export const WS_URI = IS_PROD
-  ? `wss://${window.location.host}/websocket`
-  : 'ws://beta.weirdstreet.com:3001/websocket';
+  ? `wss://beta.weirdstreet.com:3001/websocket`
+  : 'wss://beta.weirdstreet.com:3001/websocket';
