@@ -121,7 +121,7 @@ app.use(cors);
 // so let's patch that through to it!
 if (process.env.NODE_ENV === 'development') {
   app.use('/sockjs-node', (req: express$Request, res: express$Response) => {
-    res.redirect(301, `https://beta.weirdstreet.com:3000${req.path}`);
+    res.redirect(301, `http://beta.weirdstreet.com:3000${req.path}`);
   });
 }
 
@@ -207,6 +207,6 @@ process.on('uncaughtException', async err => {
 Loadable.preloadAll().then(() => {
   app.listen(PORT);
   debug(
-    `Hyperion, the server-side renderer, running at https://beta.weirdstreet.com:${PORT}`
+    `Hyperion, the server-side renderer, running at http://beta.weirdstreet.com:${PORT}`
   );
 });

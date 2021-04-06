@@ -25,7 +25,7 @@ import {
 const IS_PROD = process.env.NODE_ENV === 'production';
 const LOGIN_URL = IS_PROD
   ? `https://beta.weirdstreet.com/auth/twitter?r=https://${window.location.host}`
-  : 'https://beta.weirdstreet.com:3001/auth/twitter?r=https://beta.weirdstreet.com:3000';
+  : 'http://beta.weirdstreet.com:3001/auth/twitter?r=http://beta.weirdstreet.com:3000';
 
 const OverviewNumbers = ({ data }) => {
   if (data.loading) return <p>Loading...</p>;

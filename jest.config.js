@@ -10,5 +10,5 @@ module.exports = {
   globalSetup: path.resolve(__dirname, './shared/testing/setup'),
   globalTeardown: path.resolve(__dirname, './shared/testing/teardown'),
   testPathIgnorePatterns: ['/node_modules/', '/mutations/'],
-  testURL: 'https://beta.weirdstreet.com/',
+  testURL: 'http://beta.weirdstreet.com/',
 };
