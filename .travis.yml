@@ -1,51 +1,47 @@
 os: linux
 dist: bionic
 language: python
-python: "2.7"
-
+python: '2.7'
 before_install:
-  - sudo apt-get update -qq
-#  - sudo apt-get install -qq python-apt
-
+- sudo apt-get update -qq
 install:
-  - echo "================ install Ansible"
-#  - pip install ansible==1.9.1
-  - sudo apt-get install -qq -y ansible
-  - ansible --version
-
+- echo "================ install Ansible"
+- sudo apt-get install -qq -y ansible
+- ansible --version
 before_script:
-  - echo "=============== before script"
-  - echo $DEPLOY_SSH_KEY_BASE64
-  - echo "[weirdstreet]" > .travisci/inventory
-  - echo "${SSH_HOST} ansible_user=${SSH_USER}" >> .travisci/inventory
-  - cat .travisci/inventory
-  - |
-    if [ -z ${DEPLOY_SSH_KEY_BASE64+x} ]; then
-        echo "Error: DEPLOY_SSH_KEY_BASE64 variable is not set!"
-    else
-        echo ${DEPLOY_SSH_KEY_BASE64} | base64 --decode > /tmp/deploy_rsa
-        chmod 600 /tmp/deploy_rsa
-        # eval `ssh-agent -s`
-        # ssh-add /tmp/deploy_rsa
-    fi
-
+- echo "=============== before script"
+- echo $DEPLOY_SSH_KEY_BASE64
+- echo "[weirdstreet]" > .travisci/inventory
+- echo "${SSH_HOST} ansible_user=${SSH_USER}" >> .travisci/inventory
+- cat .travisci/inventory
+- |
+  if [ -z ${DEPLOY_SSH_KEY_BASE64+x} ]; then
+      echo "Error: DEPLOY_SSH_KEY_BASE64 variable is not set!"
+  else
+      echo ${DEPLOY_SSH_KEY_BASE64} | base64 --decode > /tmp/deploy_rsa
+      chmod 600 /tmp/deploy_rsa
+      # eval `ssh-agent -s`
+      # ssh-add /tmp/deploy_rsa
+  fi
 script:
-      - echo "==================Script run"
-      - echo ${DEPLOY_SSH_KEY_BASE64}
-      - export GIT_HASH=$(git rev-parse --short HEAD)
-      - export PREVIOUS_GIT_HASH=$(git rev-parse --short HEAD^1)
-      - echo "GIT_HASH=${GIT_HASH}"
-      - echo "PREVIOUS_GIT_HASH=${PREVIOUS_GIT_HASH}"
-      - git archive --format=tar ${GIT_HASH} > .travisci/roles/copy_files/files/${GIT_HASH}.tar
-      - sudo sed -i 's/#host_key_checking = False/host_key_checking = False/g' /etc/ansible/ansible.cfg
-      - ansible-playbook -i .travisci/inventory -e git_hash=${GIT_HASH} -e previous_git_hash=${PREVIOUS_GIT_HASH} --key-file /tmp/deploy_rsa .travisci/deploy.yml
+- echo "==================Script run"
+- echo ${DEPLOY_SSH_KEY_BASE64}
+- export GIT_HASH=$(git rev-parse --short HEAD)
+- export PREVIOUS_GIT_HASH=$(git rev-parse --short HEAD^1)
+- echo "GIT_HASH=${GIT_HASH}"
+- echo "PREVIOUS_GIT_HASH=${PREVIOUS_GIT_HASH}"
+- git archive --format=tar ${GIT_HASH} > .travisci/roles/copy_files/files/${GIT_HASH}.tar
+- sudo sed -i 's/#host_key_checking = False/host_key_checking = False/g' /etc/ansible/ansible.cfg
+- ansible-playbook -i .travisci/inventory -e git_hash=${GIT_HASH} -e previous_git_hash=${PREVIOUS_GIT_HASH}
+  --key-file /tmp/deploy_rsa .travisci/deploy.yml
 after_success:
-    - echo "========== End after success script"
-
+- echo "========== End after success script"
 branches:
   only:
-    - alpha
-    - cicd
-    
+  - alpha
+  - cicd
 addons:
-  ssh_known_hosts: ${SSH_HOST}
+  ssh_known_hosts: "${SSH_HOST}"
+notifications:
+  slack:
+    secure: SPwcoP7TeBi7EPoyfXxjfD2exi4qjd/lKT1XBOSOuiwv6wYNwXBzlNrF58kIwK6pszxyM8GOLaHIr+uGf2TMEcIBLDZDgNW+rP8SaMoq+0PpD4bP/MYy2A3NU3h92l04IosH5bP6pGu9eFEahYmMnocYV0gmuKLUf45HwHMPnxYQzNjfQrhshHfOcjN3cVC3xW2i9kNxSBEqVj79j0gkxwpWgNdsVMzmVhiOIE5BhQ3Jcpzwz/wr/2QmoPAQ53RTb+OH0LakcU0sVBXoTFjE8rE/SezyQImiJM0AFxIub7sqH21opcty66QETUN84fCFTsTHL2JqEF1Wjm/OGqKKbWZD9Ks7vsln54mXN8875N/izoz7ququ9v9dTrUqf2LtAPgb+KQVf5fCSrBsMRpJ1krxuCv5t7sSATJD7DACEuPuOAOzwZh2vnv2+yZ9XHwzxhYwMOi9XlXi5GQ0SwK4ClL6eeXhHubu9aGBkFrkoFeYc4YygK9l/T/SKruZ3m4IerPVhG6qLBSUiFJQOpmgYO11aIeZsd4WW85UDk7TA2RZ1eJLbyk4nn2dNt54ykYZzBXh1YCI8PZUoKD3UPqxpyjBrb2FKfmcZaFMnYE4WotVhPvMzwFRsROQRDv/VPim97MWK3Y4QJ6NtyZ1kXaNvqkB9wg8mkIiv94Biomos18=
