@@ -33,7 +33,9 @@ const httpLink = createUploadLink({
 // Websocket link for subscriptions
 const wsLink = new WebSocketLink({
   uri: `${
-    IS_PROD ? `wss://beta.weirdstreet.com:3001` : 'wss://beta.weirdstreet.com:3001'
+    IS_PROD
+      ? `wss://beta.weirdstreet.com:3001`
+      : 'ws://beta.weirdstreet.com:3001'
   }/websocket`,
   options: {
     reconnect: true,
