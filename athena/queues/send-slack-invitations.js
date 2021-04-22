@@ -1,6 +1,5 @@
 // @flow
 const debug = require('debug')('athena:queue:slack-import');
-import Raven from '../../shared/raven';
 import { isEmail } from 'validator';
 import {
   getCommunitySettings,
@@ -114,6 +113,5 @@ export default async (job: Job<SendSlackInvitationsJobData>) => {
   } catch (err) {
     console.error('❌ Error in job:\n');
     console.error(err);
-    Raven.captureException(err);
   }
 };

@@ -3,7 +3,6 @@ require('now-env');
 import AWS from 'aws-sdk';
 import uuidv4 from 'uuid/v4';
 import _ from 'lodash';
-import Raven from 'shared/raven';
 import sanitize from 'sanitize-filename';
 import UserError from './UserError';
 
@@ -49,7 +48,6 @@ export const uploadImage = async (
       const unsupportedMediaTypeError = new UserError(
         `We aren’t able to support uploads with the type ${mimetype}. Try uploading another image.`
       );
-      Raven.captureException(unsupportedMediaTypeError);
       throw unsupportedMediaTypeError;
     }
 

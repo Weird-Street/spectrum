@@ -4,7 +4,6 @@
 const http = require('http');
 const EventEmitter = require('events');
 const createQueue = require('./create-queue');
-const Raven = require('shared/raven');
 import type { Queues } from './types';
 import toobusy from '../middlewares/toobusy';
 

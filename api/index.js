@@ -8,7 +8,6 @@ debug('Server starting...');
 debug('logging with debug enabled!');
 import { createServer } from 'http';
 import express from 'express';
-import Raven from 'shared/raven';
 import toobusy from 'shared/middlewares/toobusy';
 import addSecurityMiddleware from 'shared/middlewares/security';
 import csrf from 'shared/middlewares/csrf';
@@ -91,25 +90,3 @@ apolloServer.installSubscriptionHandlers(httpServer);
 httpServer.listen(PORT);
 
 debug(`GraphQL API running at http://beta.weirdstreet.com:${PORT}/api`);
-
-process.on('unhandledRejection', async err => {
-  console.error('Unhandled rejection', err);
-  try {
-    await new Promise(resolve => Raven.captureException(err, resolve));
-  } catch (err) {
-    console.error('Raven error', err);
-  } finally {
-    process.exit(1);
-  }
-});
-
-process.on('uncaughtException', async err => {
-  console.error('Uncaught exception', err);
-  try {
-    await new Promise(resolve => Raven.captureException(err, resolve));
-  } catch (err) {
-    console.error('Raven error', err);
-  } finally {
-    process.exit(1);
-  }
-});

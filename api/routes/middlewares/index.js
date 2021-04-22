@@ -19,12 +19,6 @@ if (process.env.NODE_ENV === 'development') {
   middlewares.use(logging);
 }
 
-if (process.env.NODE_ENV === 'production' && !process.env.FORCE_DEV) {
-  // Raven (Sentry client) needs to come before everything else
-  const raven = require('shared/middlewares/raven').default;
-  middlewares.use(raven);
-}
-
 // Cross origin request support
 import cors from 'shared/middlewares/cors';
 middlewares.use(cors);

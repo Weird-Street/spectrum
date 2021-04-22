@@ -1,6 +1,5 @@
 // @flow
 const debug = require('debug')('athena:queue:new-thread-notification');
-import Raven from 'shared/raven';
 import axios from 'axios';
 import getMentions from 'shared/get-mentions';
 import { toPlainText, toState } from 'shared/draft-utils';
@@ -108,13 +107,17 @@ export default async (job: Job<ThreadNotificationJobData>) => {
               channel.name
             }:`,
             author_name: `${author.name} (@${author.username})`,
-            author_link: `https://beta.weirdstreet.com/users/${author.username}`,
+            author_link: `https://beta.weirdstreet.com/users/${
+              author.username
+            }`,
             author_icon: signedAuthor.profilePhoto,
             pretext: `New conversation published in ${community.name} #${
               channel.name
             }:`,
             title: truncateString(incomingThread.content.title, 80),
-            title_link: `https://beta.weirdstreet.com/thread/${incomingThread.id}`,
+            title_link: `https://beta.weirdstreet.com/thread/${
+              incomingThread.id
+            }`,
             text: truncateString(plainTextBody, 140),
             footer: 'Spectrum',
             footer_icon:
@@ -155,7 +158,6 @@ export default async (job: Job<ThreadNotificationJobData>) => {
   ]).catch(err => {
     console.error('❌ Error in job:\n');
     console.error(err);
-    Raven.captureException(err);
     console.error(err);
   });
 };

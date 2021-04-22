@@ -1,5 +1,4 @@
 // @flow
-import Raven from 'shared/raven';
 import type { GraphQLContext } from '../../';
 import type { EditUserInput } from 'shared/db/queries/user';
 import UserError from '../../utils/UserError';
@@ -62,9 +61,6 @@ export default requireAuth(
     await updateCookieUserData({
       ...editedUser,
     }).catch(err => {
-      Raven.captureException(
-        new Error(`Error updating cookie user data: ${err.message}`)
-      );
       return editedUser;
     });
 

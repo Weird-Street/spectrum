@@ -1,6 +1,5 @@
 // @flow
 const debug = require('debug')('athena:queue:channel-notification');
-import Raven from '../../shared/raven';
 import { fetchPayload, createPayload } from '../utils/payloads';
 import { getDistinctActors } from '../utils/actors';
 import { getMembersInCommunity } from '../models/usersCommunities';
@@ -90,6 +89,5 @@ export default async (job: Job<ChannelNotificationJobData>) => {
   return Promise.all([notificationPromises]).catch(err => {
     console.error('❌ Error in job:\n');
     console.error(err);
-    Raven.captureException(err);
   });
 };

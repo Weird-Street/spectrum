@@ -4,7 +4,6 @@ import requestIp from 'request-ip';
 import ms from 'ms';
 import Limiter from 'ratelimiter';
 import createRedis from '../bull/create-redis';
-import Raven from 'shared/raven';
 
 const server = process.env.SENTRY_NAME || 'unnamed';
 const redis = createRedis({

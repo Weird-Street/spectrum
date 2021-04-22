@@ -8076,17 +8076,6 @@ ratelimiter@^3.3.0:
   resolved "https://registry.yarnpkg.com/ratelimiter/-/ratelimiter-3.3.0.tgz#bed9882f552e1aff4d7d3281bd1ab380f94cbf74"
   integrity sha512-dDax7d0XosqzOrrQyMYEiu87tHDT6Wqm9LtGlxnQVAQJtEG6bmbvgPZ6E2/g1XrIpikJyec9hrOHKZ+DuVWxgQ==
 
-raven@^2.6.4:
-  version "2.6.4"
-  resolved "https://registry.yarnpkg.com/raven/-/raven-2.6.4.tgz#458d4a380c8fbb59e0150c655625aaf60c167ea3"
-  integrity sha512-6PQdfC4+DQSFncowthLf+B6Hr0JpPsFBgTVYTAOq7tCmx/kR4SXbeawtPch20+3QfUcQDoJBLjWW1ybvZ4kXTw==
-  dependencies:
-    cookie "0.3.1"
-    md5 "^2.2.1"
-    stack-trace "0.0.10"
-    timed-out "4.0.1"
-    uuid "3.3.2"
-
 raw-body@2.4.0:
   version "2.4.0"
   resolved "https://registry.yarnpkg.com/raw-body/-/raw-body-2.4.0.tgz#a1ce6fb9c9bc356ca52e89256ab59059e13d0332"

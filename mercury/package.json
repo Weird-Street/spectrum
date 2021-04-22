@@ -9,7 +9,6 @@
     "ioredis": "3.2.2",
     "now-env": "^3.2.0",
     "performance-now": "^2.1.0",
-    "raven": "^2.6.4",
     "redis-tag-cache": "^1.2.1",
     "rethinkdb-inspector": "^0.3.3",
     "rethinkdbdash": "^2.3.31",

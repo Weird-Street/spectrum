@@ -1,7 +1,6 @@
 // @flow
 const Queue = require('bull');
 import createRedis from './create-redis';
-import Raven from 'shared/raven';
 import { statsd } from 'shared/statsd';
 
 const client = createRedis();
@@ -84,7 +83,6 @@ function createQueue(name: string, queueOptions?: Object = {}) {
   queue.on('failed', (job, err) => {
     console.error(`Job#${job.id} failed, with following reason`);
     console.error({ job, err });
-    Raven.captureException(err);
     statsd.increment('jobs.active', -1, {
       queue: name,
     });

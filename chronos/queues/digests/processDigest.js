@@ -1,6 +1,5 @@
 // @flow
 const debug = require('debug')('chronos:queue:process-digest');
-import Raven from 'shared/raven';
 import { getUserIdsForDigest } from 'chronos/models/usersSettings';
 import type { Timeframe } from 'chronos/types';
 import { processIndividualDigestQueue } from 'shared/bull/queues';
@@ -57,6 +56,5 @@ export default async (timeframe: Timeframe) => {
   } catch (err) {
     console.error('❌ Error in job:\n');
     console.error(err);
-    Raven.captureException(err);
   }
 };

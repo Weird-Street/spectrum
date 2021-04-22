@@ -1,5 +1,4 @@
 // TODO: Flow type again
-import Raven from 'shared/raven';
 import type { DBChannel } from 'shared/types';
 import type { GraphQLContext } from '../../';
 import { canViewChannel } from '../../utils/permissions';
@@ -37,9 +36,6 @@ export default async (root: DBChannel, _: any, ctx: GraphQLContext) => {
   }
 
   // Fallback if there's no denormalized memberCount, also report to Sentry
-  Raven.captureException(
-    new Error(`Channel with ID "${id}" does not have denormalized memberCount.`)
-  );
   return {
     members: await loaders.channelMemberCount
       .load(id)

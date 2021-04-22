@@ -2,7 +2,6 @@
 const debug = require('debug')('hermes:queue:send-admin-user-reported-email');
 import sendEmail from '../send-email';
 import { getUserById } from 'shared/db/queries/user';
-import Raven from 'shared/raven';
 import {
   SEND_ADMIN_USER_REPORTED_EMAIL,
   ADMIN_USER_REPORTED_TEMPLATE,
@@ -26,7 +25,10 @@ export default async (
   try {
     return sendEmail({
       templateId: ADMIN_USER_REPORTED_TEMPLATE,
-      to: [{ email: 'brian@beta.weirdstreet.com ' }, { email: 'max@beta.weirdstreet.com ' }],
+      to: [
+        { email: 'brian@beta.weirdstreet.com ' },
+        { email: 'max@beta.weirdstreet.com ' },
+      ],
       dynamic_template_data: {
         subject,
         preheader,
@@ -38,6 +40,5 @@ export default async (
   } catch (err) {
     console.error('❌ Error in job:\n');
     console.error(err);
-    return Raven.captureException(err);
   }
 };

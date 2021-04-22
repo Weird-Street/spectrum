@@ -1,6 +1,5 @@
 // @flow
 const debug = require('debug')('hermes:queue:send-new-message-email');
-import Raven from 'shared/raven';
 import sendEmail from '../send-email';
 import { generateUnsubscribeToken } from '../utils/generate-jwt';
 import smarten from 'hermes/utils/smarten-string';
@@ -105,6 +104,5 @@ export default async (job: Job<SendNewMessageEmailJobData>): Promise<void> => {
   } catch (err) {
     console.error('❌ Error in job:\n');
     console.error(err);
-    return Raven.captureException(err);
   }
 };

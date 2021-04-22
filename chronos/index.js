@@ -1,6 +1,5 @@
 // @flow
 const debug = require('debug')('chronos');
-import Raven from 'shared/raven';
 import createWorker from 'shared/bull/create-worker';
 import processDailyDigest from 'chronos/queues/digests/dailyDigest';
 import processWeeklyDigest from 'chronos/queues/digests/weeklyDigest';
@@ -57,26 +56,4 @@ debug('🗄 Crons open for business');
 server.listen(PORT, 'beta.weirdstreet.com', 511, () => {
   // prettier-ignore
   debug(`💉 Healthcheck server running at ${server.address().address}:${server.address().port}`);
-});
-
-process.on('unhandledRejection', async err => {
-  console.error('Unhandled rejection', err);
-  try {
-    await new Promise(resolve => Raven.captureException(err, resolve));
-  } catch (err) {
-    console.error('Raven error', err);
-  } finally {
-    process.exit(1);
-  }
-});
-
-process.on('uncaughtException', async err => {
-  console.error('Uncaught exception', err);
-  try {
-    await new Promise(resolve => Raven.captureException(err, resolve));
-  } catch (err) {
-    console.error('Raven error', err);
-  } finally {
-    process.exit(1);
-  }
 });

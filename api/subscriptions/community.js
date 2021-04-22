@@ -5,7 +5,6 @@ import { getUsersPermissionsInCommunities } from '../models/usersCommunities';
 import { getCommunitiesByUser } from '../models/community';
 import asyncify from '../utils/asyncify';
 import UserError from '../utils/UserError';
-import Raven from 'shared/raven';
 import type { GraphQLContext } from '../';
 
 const addCommunityListener = asyncify(listenToUpdatedCommunities);
@@ -52,7 +51,6 @@ module.exports = {
           onError: err => {
             // Don't crash the whole API server on error in the listener
             console.error(err);
-            Raven.captureException(err);
           },
         });
       },

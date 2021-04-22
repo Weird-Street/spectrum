@@ -1,7 +1,6 @@
 // @flow
 const debug = require('debug')('shared:changefeed-utils');
 import processChangefeed from 'rethinkdb-changefeed-reconnect';
-import Raven from 'shared/raven';
 import type { Cursor } from 'rethinkhaberdashery';
 
 export const newDocuments = (db: any) =>
@@ -59,7 +58,6 @@ export const createChangefeed = (
     callback,
     err => {
       console.error(err);
-      Raven.captureException(err);
     },
     {
       changefeedName: name,

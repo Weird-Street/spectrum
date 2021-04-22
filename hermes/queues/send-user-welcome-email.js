@@ -1,7 +1,6 @@
 // @flow
 const debug = require('debug')('hermes:queue:send-user-welcome-email');
 import sendEmail from '../send-email';
-import Raven from 'shared/raven';
 import type { Job, NewUserWelcomeEmailJobData } from 'shared/bull/types';
 import {
   NEW_USER_WELCOME_TEMPLATE,
@@ -30,6 +29,5 @@ export default (job: Job<NewUserWelcomeEmailJobData>): Promise<void> => {
   } catch (err) {
     console.error('❌ Error in job:\n');
     console.error(err);
-    return Raven.captureException(err);
   }
 };

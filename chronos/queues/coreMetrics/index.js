@@ -1,6 +1,5 @@
 // @flow
 const debug = require('debug')('chronos:queue:save-core-metrics');
-import Raven from 'shared/raven';
 import {
   saveCoreMetrics,
   getActiveUsersInTimeframe,
@@ -77,6 +76,5 @@ export default async () => {
   } catch (err) {
     console.error('❌ Error in job:\n');
     console.error(err);
-    Raven.captureException(err);
   }
 };

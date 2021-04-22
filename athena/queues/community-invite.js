@@ -1,6 +1,5 @@
 // @flow
 const debug = require('debug')('athena:queue:community-invitation');
-import Raven from '../../shared/raven';
 import { fetchPayload } from '../utils/payloads';
 import { getUserPermissionsInCommunity } from '../models/usersCommunities';
 import { storeNotification } from '../models/notification';
@@ -98,7 +97,6 @@ export default async (job: Job<CommunityInviteNotificationJobData>) => {
       customMessage
     ).catch(err => {
       console.error(err);
-      Raven.captureException(err);
     });
   } else {
     // the user exists on spectrum
@@ -151,7 +149,6 @@ export default async (job: Job<CommunityInviteNotificationJobData>) => {
     ]).catch(err => {
       console.error('❌ Error in job:\n');
       console.error(err);
-      Raven.captureException(err);
     });
   }
 };

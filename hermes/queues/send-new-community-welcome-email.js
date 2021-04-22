@@ -1,7 +1,6 @@
 // @flow
 const debug = require('debug')('hermes:queue:send-new-community-welcome-email');
 import sendEmail from '../send-email';
-import Raven from 'shared/raven';
 import {
   NEW_COMMUNITY_WELCOME_TEMPLATE,
   SEND_NEW_COMMUNITY_WELCOME_EMAIL,
@@ -30,6 +29,5 @@ export default (job: Job<NewCommunityWelcomeEmailJobData>): Promise<void> => {
   } catch (err) {
     console.error('❌ Error in job:\n');
     console.error(err);
-    return Raven.captureException(err);
   }
 };

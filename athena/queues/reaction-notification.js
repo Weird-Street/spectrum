@@ -1,6 +1,5 @@
 // @flow
 const debug = require('debug')('athena:queue:reaction-notification');
-import Raven from '../../shared/raven';
 import { fetchPayload, createPayload } from '../utils/payloads';
 import { getDistinctActors } from '../utils/actors';
 import { getMessageById } from '../models/message';
@@ -82,7 +81,6 @@ export default async (job: Job<ReactionNotificationJobData>) => {
       markUsersNotificationsAsNew(updatedNotification.id, message.senderId),
     ]).catch(err => {
       console.error(err);
-      Raven.captureException(err);
     });
   } else {
     // if no notification was found that matches our bundling criteria, create a new notification
@@ -121,7 +119,6 @@ export default async (job: Job<ReactionNotificationJobData>) => {
     ]).catch(err => {
       console.error('❌ Error in job:\n');
       console.error(err);
-      Raven.captureException(err);
     });
   }
 };

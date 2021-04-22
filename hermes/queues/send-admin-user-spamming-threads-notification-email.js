@@ -2,7 +2,6 @@
 const debug = require('debug')(
   'hermes:queue:send-admin-user-spamming-threads-notification'
 );
-import Raven from 'shared/raven';
 import sendEmail from '../send-email';
 import {
   SEND_ADMIN_USER_SPAMMING_THREADS_NOTIFICATION_EMAIL,
@@ -36,7 +35,10 @@ export default (job: Job<AdminUserSpammingThreadsJobData>): Promise<void> => {
   try {
     return sendEmail({
       templateId: ADMIN_USER_SPAMMING_THREADS_NOTIFICATION_TEMPLATE,
-      to: [{ email: 'brian@beta.weirdstreet.com ' }, { email: 'max@beta.weirdstreet.com ' }],
+      to: [
+        { email: 'brian@beta.weirdstreet.com ' },
+        { email: 'max@beta.weirdstreet.com ' },
+      ],
       dynamic_template_data: {
         subject,
         preheader,
@@ -52,6 +54,5 @@ export default (job: Job<AdminUserSpammingThreadsJobData>): Promise<void> => {
   } catch (err) {
     console.error('❌ Error in job:\n');
     console.error(err);
-    return Raven.captureException(err);
   }
 };

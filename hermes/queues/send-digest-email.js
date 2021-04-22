@@ -2,7 +2,6 @@
 const debug = require('debug')('hermes:queue:send-weekly-digest-email');
 import sendEmail from '../send-email';
 import { DIGEST_TEMPLATE } from './constants';
-import Raven from 'shared/raven';
 import { generateUnsubscribeToken } from '../utils/generate-jwt';
 import { TYPE_DAILY_DIGEST, TYPE_WEEKLY_DIGEST } from './constants';
 import formatDate from '../utils/format-date';
@@ -84,6 +83,5 @@ export default async (job: Job<SendDigestEmailJobData>): Promise<void> => {
   } catch (err) {
     console.error('❌ Error in job:\n');
     console.error(err);
-    return Raven.captureException(err);
   }
 };

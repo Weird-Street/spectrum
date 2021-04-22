@@ -1,6 +1,5 @@
 // @flow
 const debug = require('debug')('chronos:queues:active-community-admin-report');
-import Raven from 'shared/raven';
 import { difference } from 'lodash';
 import { getLastTwoCoreMetrics } from 'chronos/models/coreMetrics';
 import { _adminSendActiveCommunityReportEmailQueue } from 'shared/bull/queues';
@@ -44,6 +43,5 @@ export default async () => {
   } catch (err) {
     console.error('❌ Error in job:\n');
     console.error(err);
-    Raven.captureException(err);
   }
 };

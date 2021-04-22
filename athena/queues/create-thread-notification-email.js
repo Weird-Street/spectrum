@@ -1,6 +1,5 @@
 // @flow
 const debug = require('debug')('athena:queue:create-thread-email');
-import Raven from '../../shared/raven';
 import truncate from 'shared/truncate';
 import getEmailStatus from '../utils/get-email-status';
 import { getUserById } from 'shared/db/queries/user';
@@ -74,7 +73,6 @@ const createThreadNotificationEmail = async (
   return Promise.all([emailPromises]).catch(err => {
     console.error('❌ Error in job:\n');
     console.error(err);
-    Raven.captureException(err);
   });
 };
 

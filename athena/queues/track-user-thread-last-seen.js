@@ -1,6 +1,5 @@
 // @flow
 const debug = require('debug')('athena:queue:track-user-thread-last-seen');
-import Raven from 'shared/raven';
 import {
   getUsersThread,
   setUserThreadLastSeen,
@@ -66,6 +65,5 @@ export default async (job: Job<UserThreadLastSeenJobData>) => {
     .catch(err => {
       console.error('❌ Error in job');
       console.error(err);
-      Raven.captureException(err);
     });
 };

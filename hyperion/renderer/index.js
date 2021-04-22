@@ -20,7 +20,6 @@ import { Provider } from 'react-redux';
 import { HelmetProvider } from 'react-helmet-async';
 import Loadable from 'react-loadable';
 import { getBundles } from 'react-loadable/webpack';
-import Raven from 'shared/raven';
 import introspectionQueryResultData from 'shared/graphql/schema.json';
 // $FlowIssue
 import stats from '../../build/react-loadable.json';
@@ -40,7 +39,8 @@ const FORCE_DEV = process.env.FORCE_DEV;
 const FIVE_MINUTES = 300;
 const ONE_HOUR = 3600;
 
-if (!IS_PROD || FORCE_DEV) debug('Querying API at beta.weirdstreet.com:3001/api');
+if (!IS_PROD || FORCE_DEV)
+  debug('Querying API at beta.weirdstreet.com:3001/api');
 
 const renderer = (req: express$Request, res: express$Response) => {
   res.setHeader('Content-Type', 'text/html; charset=utf-8');
@@ -184,10 +184,7 @@ const renderer = (req: express$Request, res: express$Response) => {
       // Avoid memory leaks, see https://github.com/styled-components/styled-components/issues/1624#issuecomment-425382979
       sheet.seal();
       console.error(err);
-      const sentryId =
-        process.env.NODE_ENV === 'production'
-          ? Raven.captureException(err)
-          : 'Only output in production.';
+      const sentryId = 'Only output in production.';
       res.status(500);
       res.send(
         `<!DOCTYPE html><html><head><title>Spectrum</title> <style>body{margin: 0;}html{-webkit-font-smoothing: antialiased; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';}h1, p{line-height: 1.5;}.container{background: rgb(56,24,229);background: linear-gradient(90deg, rgba(56,24,229,1) 0%, rgba(56,24,229,0.8029586834733894) 52%, rgba(56,24,229,1) 100%); width: 100%; display: flex; height: 100vh; justify-content: center;}.item{color: white; font-weight: bold; align-self: center; text-align: center;}a{color: white;}span{font-size: 40px; padding: 0; margin: 0;}</style></head><body> <div class="container"> <div class="item"> <span>😢</span> <h1>Oops, something went wrong. Sorry!</h1> <p>Please refresh the page.</p></div></div></body></html>`

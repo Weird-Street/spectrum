@@ -7,7 +7,6 @@ import UserError from '../utils/UserError';
 import asyncify from '../utils/asyncify';
 import { userCanViewChannel, userCanViewDirectMessageThread } from './utils';
 import { trackUserThreadLastSeenQueue } from 'shared/bull/queues.js';
-import Raven from 'shared/raven';
 
 const addMessageListener = asyncify(listenToNewMessages);
 
@@ -69,12 +68,10 @@ module.exports = {
             onError: err => {
               // Don't crash the whole API server on error in the listener
               console.error(err);
-              Raven.captureException(err);
             },
           });
         } catch (err) {
           console.error(err);
-          Raven.captureException(err);
         }
       },
     },

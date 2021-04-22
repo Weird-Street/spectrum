@@ -1,6 +1,5 @@
 // @flow
 const debug = require('debug')('hermes:sendgrid-webhook-events');
-import Raven from 'shared/raven';
 import { getUserByEmail } from 'shared/db/queries/user';
 import { deactivateUserEmailNotifications } from '../models/usersSettings';
 import type { Job, SendGridWebhookEventJobData } from 'shared/bull/types';
@@ -27,6 +26,5 @@ export default (job: Job<SendGridWebhookEventJobData>): Promise<void> => {
   } catch (err) {
     console.error('❌ Error in job:\n');
     console.error(err);
-    return Raven.captureException(err);
   }
 };

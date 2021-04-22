@@ -1,6 +1,5 @@
 // @flow
 const debug = require('debug')('hermes:queue:send-admin-toxic-content-email');
-import Raven from 'shared/raven';
 import sendEmail from '../send-email';
 import {
   ADMIN_TOXIC_MESSAGE_TEMPLATE,
@@ -27,7 +26,10 @@ export default (job: Job<AdminToxicContentEmailJobData>): Promise<void> => {
   try {
     return sendEmail({
       templateId: ADMIN_TOXIC_MESSAGE_TEMPLATE,
-      to: [{ email: 'brian@beta.weirdstreet.com ' }, { email: 'max@beta.weirdstreet.com ' }],
+      to: [
+        { email: 'brian@beta.weirdstreet.com ' },
+        { email: 'max@beta.weirdstreet.com ' },
+      ],
       dynamic_template_data: {
         subject,
         preheader: text,
@@ -47,6 +49,5 @@ export default (job: Job<AdminToxicContentEmailJobData>): Promise<void> => {
   } catch (err) {
     console.error('❌ Error in job:\n');
     console.error(err);
-    return Raven.captureException(err);
   }
 };

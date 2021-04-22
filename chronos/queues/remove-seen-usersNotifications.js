@@ -1,6 +1,5 @@
 // @flow
 const debug = require('debug')('chronos:queue:remove-seen-usersNotifications');
-import Raven from 'shared/raven';
 import type { DBUsersNotifications } from 'shared/types';
 import {
   getSeenUsersNotifications,
@@ -65,6 +64,5 @@ export default async () => {
   } catch (err) {
     console.error('❌ Error in job:\n');
     console.error(err);
-    Raven.captureException(err);
   }
 };

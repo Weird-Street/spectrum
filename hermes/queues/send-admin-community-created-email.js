@@ -1,6 +1,5 @@
 // @flow
 const debug = require('debug')('hermes:queue:admin-community-created-email');
-import Raven from 'shared/raven';
 import sendEmail from '../send-email';
 import type { Job, AdminCommunityCreatedEmailJobData } from 'shared/bull/types';
 import {
@@ -15,7 +14,10 @@ export default (job: Job<AdminCommunityCreatedEmailJobData>): Promise<void> => {
   try {
     return sendEmail({
       templateId: ADMIN_COMMUNITY_CREATED_TEMPLATE,
-      to: [{ email: 'brian@beta.weirdstreet.com ' }, { email: 'max@beta.weirdstreet.com ' }],
+      to: [
+        { email: 'brian@beta.weirdstreet.com ' },
+        { email: 'max@beta.weirdstreet.com ' },
+      ],
       dynamic_template_data: {
         subject: `New community: ${community.name}`,
         user: {
@@ -28,6 +30,5 @@ export default (job: Job<AdminCommunityCreatedEmailJobData>): Promise<void> => {
   } catch (err) {
     console.error('❌ Error in job:\n');
     console.error(err);
-    return Raven.captureException(err);
   }
 };

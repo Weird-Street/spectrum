@@ -2,7 +2,6 @@
 const debug = require('debug')(
   'athena:queue:user-requested-join-private-channel'
 );
-import Raven from 'shared/raven';
 import { getCommunityById } from '../models/community';
 import { storeNotification } from '../models/notification';
 import { storeUsersNotifications } from 'shared/db/queries/usersNotifications';
@@ -102,6 +101,5 @@ export default async (job: Job<PrivateChannelRequestJobData>) => {
   ]).catch(err => {
     console.error('❌ Error in job:\n');
     console.error(err);
-    Raven.captureException(err);
   });
 };

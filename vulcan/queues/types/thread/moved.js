@@ -2,7 +2,6 @@
 const debug = require('debug')('vulcan:queue:thread-moved');
 import initIndex from 'shared/algolia';
 const index = initIndex('threads_and_messages');
-import Raven from 'shared/raven';
 import type { Job, SearchIndexJobData } from 'shared/bull/types';
 import { getThreadById } from 'shared/db/queries/thread';
 import type { DBThread } from 'shared/types';

@@ -9,7 +9,6 @@ import processThreadReactionCreated from '../functions/processThreadReactionCrea
 import processThreadReactionDeleted from '../functions/processThreadReactionDeleted';
 import processMessageDeleted from '../functions/processMessageDeleted';
 import processThreadDeletedByModeration from '../functions/processThreadDeletedByModeration';
-import Raven from 'shared/raven';
 import {
   THREAD_CREATED,
   THREAD_DELETED,
@@ -70,6 +69,5 @@ export default async (job: Job<ReputationEventJobData>) => {
   } catch (err) {
     console.error('❌ Error in job:\n');
     console.error(err);
-    Raven.captureException(err);
   }
 };

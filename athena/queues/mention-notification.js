@@ -1,6 +1,5 @@
 // @flow
 const debug = require('debug')('athena:queue:mention-notification');
-import Raven from '../../shared/raven';
 import { toPlainText, toState } from 'shared/draft-utils';
 import truncate from 'shared/truncate';
 import { fetchPayload } from '../utils/payloads';
@@ -200,6 +199,5 @@ export default async ({ data }: Job<MentionNotificationJobData>) => {
   ]).catch(err => {
     console.error('❌ Error in job:\n');
     console.error(err);
-    Raven.captureException(err);
   });
 };

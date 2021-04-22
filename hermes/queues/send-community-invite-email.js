@@ -1,6 +1,5 @@
 // @flow
 const debug = require('debug')('hermes:queue:send-community-invite-email');
-import Raven from 'shared/raven';
 import sendEmail from '../send-email';
 import {
   COMMUNITY_INVITE_TEMPLATE,
@@ -70,6 +69,5 @@ export default (job: SendCommunityInviteEmailJob): Promise<void> => {
   } catch (err) {
     console.error('❌ Error in job:\n');
     console.error(err);
-    return Raven.captureException(err);
   }
 };

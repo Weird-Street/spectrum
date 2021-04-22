@@ -1,6 +1,5 @@
 // @flow
 const debug = require('debug')('athena:queue:direct-message-notification');
-import Raven from '../../shared/raven';
 import { fetchPayload, createPayload } from '../utils/payloads';
 import { getDistinctActors } from '../utils/actors';
 import { getUserById } from 'shared/db/queries/user';
@@ -169,6 +168,5 @@ export default async (job: Job<DirectMessageNotificationJobData>) => {
   return Promise.all(formatAndBufferPromises).catch(err => {
     console.error('❌ Error in job:\n');
     console.error(err);
-    Raven.captureException(err);
   });
 };

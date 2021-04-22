@@ -7,7 +7,6 @@ import {
 } from '../models/usersChannels';
 import asyncify from '../utils/asyncify';
 import UserError from '../utils/UserError';
-import Raven from 'shared/raven';
 import type { GraphQLContext } from '../';
 
 const addThreadListener = asyncify(listenToUpdatedThreads);
@@ -54,7 +53,6 @@ module.exports = {
           onError: err => {
             // Don't crash the whole API server on error in the listener
             console.error(err);
-            Raven.captureException(err);
           },
         });
       },

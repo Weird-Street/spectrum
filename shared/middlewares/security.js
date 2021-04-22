@@ -82,7 +82,6 @@ function securityMiddleware(
       scriptSrc: [
         "'self'",
         "'unsafe-eval'",
-        'cdn.ravenjs.com',
         'cdn.polyfill.io',
 
         // Note: We will execution of any inline scripts that have the following

@@ -12,7 +12,6 @@ import path from 'path';
 // TODO: This is the only thing that connects hyperion to the db
 // we should get rid of this if at all possible
 import { getUserById } from 'shared/db/queries/user';
-import Raven from 'shared/raven';
 import toobusy from 'shared/middlewares/toobusy';
 import rateLimiter from 'shared/middlewares/rate-limiter';
 import addSecurityMiddleware from 'shared/middlewares/security';
@@ -107,12 +106,6 @@ if (process.env.NODE_ENV === 'development') {
   app.use(logging);
 }
 
-if (process.env.NODE_ENV === 'production' && !process.env.FORCE_DEV) {
-  // Raven (Sentry client) needs to come before everything else
-  const raven = require('shared/middlewares/raven').default;
-  app.use(raven);
-}
-
 // Cross origin request support
 import cors from 'shared/middlewares/cors';
 app.use(cors);
@@ -181,28 +174,6 @@ app.get('*', (req: express$Request, res, next) => {
 
 import renderer from './renderer';
 app.get('*', renderer);
-
-process.on('unhandledRejection', async err => {
-  console.error('Unhandled rejection', err);
-  try {
-    await new Promise(res => Raven.captureException(err, res));
-  } catch (err) {
-    console.error('Raven error', err);
-  } finally {
-    process.exit(1);
-  }
-});
-
-process.on('uncaughtException', async err => {
-  console.error('Uncaught exception', err);
-  try {
-    await new Promise(res => Raven.captureException(err, res));
-  } catch (err) {
-    console.error('Raven error', err);
-  } finally {
-    process.exit(1);
-  }
-});
 
 Loadable.preloadAll().then(() => {
   app.listen(PORT);

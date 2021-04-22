@@ -13,7 +13,6 @@ import { createGeneralChannel } from '../../models/channel';
 import { createOwnerInChannel } from '../../models/usersChannels';
 import { publishThread } from '../../models/thread';
 import { isAuthedResolver as requireAuth } from '../../utils/permissions';
-import Raven from 'shared/raven';
 
 export default requireAuth(
   async (_: any, args: CreateCommunityInput, { user }: GraphQLContext) => {
@@ -90,7 +89,6 @@ export default requireAuth(
       return setCommunityWatercoolerId(community.id, watercooler.id);
       // Do not fail community creation if the watercooler creation does not work out
     } catch (err) {
-      Raven.captureException(err);
       return community;
     }
   }

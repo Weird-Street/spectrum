@@ -79,8 +79,6 @@ export const getFooter = ({
   nonce: string,
 }) => {
   return html`</div>
-      <script defer="defer" src="https://cdn.ravenjs.com/3.14.0/raven.min.js" crossorigin="anonymous"></script>
-      <script defer="defer" src="/install-raven.js"></script>
       <script nonce="${nonce}">window.__SERVER_STATE__=${serialize(
     state
   )}</script>

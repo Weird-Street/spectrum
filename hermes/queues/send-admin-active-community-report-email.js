@@ -3,7 +3,6 @@ const debug = require('debug')(
   'hermes:queue:send-admin-active-community-report-email'
 );
 import sendEmail from '../send-email';
-import Raven from 'shared/raven';
 import {
   ADMIN_ACTIVE_COMMUNITY_REPORT_TEMPLATE,
   SEND_ACTIVE_COMMUNITY_ADMIN_REPORT_EMAIL,
@@ -34,7 +33,10 @@ export default (
   try {
     return sendEmail({
       templateId: ADMIN_ACTIVE_COMMUNITY_REPORT_TEMPLATE,
-      to: [{ email: 'brian@beta.weirdstreet.com ' }, { email: 'max@beta.weirdstreet.com ' }],
+      to: [
+        { email: 'brian@beta.weirdstreet.com ' },
+        { email: 'max@beta.weirdstreet.com ' },
+      ],
       dynamic_template_data: {
         subject: `Active Community Report: ${month} ${day}, ${year}`,
         data: {
@@ -53,6 +55,5 @@ export default (
   } catch (err) {
     console.error('❌ Error in job:\n');
     console.error(err);
-    return Raven.captureException(err);
   }
 };

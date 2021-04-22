@@ -8,8 +8,6 @@ const {
 } = require('../models/directMessageThread');
 import asyncify from '../utils/asyncify';
 import UserError from '../utils/UserError';
-import Raven from 'shared/raven';
-
 import type { GraphQLContext } from '../';
 import type { GraphQLResolveInfo } from 'graphql';
 import type { DBDirectMessageThread } from '../models/directMessageThread';
@@ -39,7 +37,6 @@ module.exports = {
           onError: err => {
             // Don't crash the whole API server on error in the listener
             console.error(err);
-            Raven.captureException(err);
           },
         });
       },

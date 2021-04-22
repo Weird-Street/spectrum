@@ -1,6 +1,5 @@
 // @flow
 const debug = require('debug')('hermes:queue:send-new-direct-message-email');
-import Raven from 'shared/raven';
 import sendEmail from '../send-email';
 import { generateUnsubscribeToken } from '../utils/generate-jwt';
 import {
@@ -47,6 +46,5 @@ export default async (
   } catch (err) {
     console.error('❌ Error in job:\n');
     console.error(err);
-    return Raven.captureException(err);
   }
 };

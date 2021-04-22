@@ -2,7 +2,6 @@
 const debug = require('debug')('athena:queue:message-notification');
 import { toState, toPlainText } from 'shared/draft-utils';
 import getMentions from 'shared/get-mentions';
-import Raven from 'shared/raven';
 import { fetchPayload, createPayload } from '../../utils/payloads';
 import { getDistinctActors } from '../../utils/actors';
 import formatData from './format-data';
@@ -182,6 +181,5 @@ export default async (job: Job<MessageNotificationJobData>) => {
   return Promise.all(formatAndBufferPromises).catch(err => {
     console.error('❌ Error in job:\n');
     console.error(err);
-    Raven.captureException(err);
   });
 };

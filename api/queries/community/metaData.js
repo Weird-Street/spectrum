@@ -1,5 +1,4 @@
 // TODO: Flow type again
-import Raven from 'shared/raven';
 import type { DBCommunity } from 'shared/types';
 import type { GraphQLContext } from '../../';
 import { canViewCommunity } from '../../utils/permissions';
@@ -50,12 +49,6 @@ export default async (root: DBCommunity, _: any, ctx: GraphQLContext) => {
     const count = await loaders.communityMemberCount
       .load(id)
       .then(res => (res && res.reduction) || 0);
-
-    await Raven.captureException(
-      new Error(
-        `Community with ID "${id}" does not have denormalized memberCount.`
-      )
-    );
 
     return count;
   };
