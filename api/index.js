@@ -76,7 +76,7 @@ app.use('/', (req: express$Request, res: express$Response) => {
   res.redirect(
     process.env.NODE_ENV === 'production' && !process.env.FORCE_DEV
       ? 'https://beta.weirdstreet.com'
-      : 'http://beta.weirdstreet.com:3000'
+      : 'https://beta.weirdstreet.com'
   );
 });
 

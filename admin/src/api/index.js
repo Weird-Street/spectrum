@@ -15,7 +15,7 @@ const IS_PROD = process.env.NODE_ENV === 'production';
 // In production the API is at the same URL, in development it's at a different port
 const API_URI = IS_PROD
   ? 'https://beta.weirdstreet.com/api'
-  : 'http://beta.weirdstreet.com:3001/api';
+  : 'https://beta.weirdstreet.com/api';
 
 const cache = new InMemoryCache({
   fragmentMatcher: new IntrospectionFragmentMatcher({

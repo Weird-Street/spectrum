@@ -8,6 +8,6 @@ export const logout = () => {
       window.location.href =
         process.env.NODE_ENV === 'production'
           ? '/auth/logout'
-          : 'http://beta.weirdstreet.com:3001/auth/logout';
+          : 'https://beta.weirdstreet.com/auth/logout';
     });
 };

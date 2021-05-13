@@ -31,7 +31,7 @@ slackRouter.get('/', (req: any, res: any) => {
   const connectedBy = req.user.id;
   const returnURI = IS_PROD
     ? 'https://beta.weirdstreet.com/api/slack'
-    : 'http://beta.weirdstreet.com:3001/api/slack';
+    : 'https://beta.weirdstreet.com/api/slack';
 
   // generate an oauth token. This token will be used to communicate with the Slack API to get user information, and we'll store the token in the db record to allow for the user to access their Slack team info in the future.
   return generateOAuthToken(code, returnURI)
@@ -44,7 +44,7 @@ slackRouter.get('/', (req: any, res: any) => {
     .then(slug => {
       return IS_PROD
         ? res.redirect(`https://beta.weirdstreet.com/${slug}/settings`)
-        : res.redirect(`http://beta.weirdstreet.com:3000/${slug}/settings`);
+        : res.redirect(`https://beta.weirdstreet.com/${slug}/settings`);
     });
 });
 
@@ -55,7 +55,7 @@ slackRouter.get('/onboarding', (req: any, res: any) => {
   const connectedBy = req.user.id;
   const returnURI = IS_PROD
     ? 'https://beta.weirdstreet.com/api/slack/onboarding'
-    : 'http://beta.weirdstreet.com:3001/api/slack/onboarding';
+    : 'https://beta.weirdstreet.com/api/slack/onboarding';
 
   // generate an oauth token. This token will be used to communicate with the Slack API to get user information, and we'll store the token in the db record to allow for the user to access their Slack team info in the future.
   return generateOAuthToken(code, returnURI)
@@ -68,7 +68,7 @@ slackRouter.get('/onboarding', (req: any, res: any) => {
     .then(id => {
       return IS_PROD
         ? res.redirect(`https://beta.weirdstreet.com/new/community?s=2&id=${id}`)
-        : res.redirect(`http://beta.weirdstreet.com:3000/new/community?s=2&id=${id}`);
+        : res.redirect(`https://beta.weirdstreet.com/new/community?s=2&id=${id}`);
     });
 });
 

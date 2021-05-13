@@ -1,5 +1,5 @@
 {
-  "baseUrl": "http://beta.weirdstreet.com:3000",
+  "baseUrl": "https://beta.weirdstreet.com",
   "viewportWidth": 1300,
   "defaultCommandTimeout": 20000,
   "env": {
